@@ -12,4 +12,6 @@ namespace Lequipe\Service;
 interface AuthServiceInterface
 {
     public function getAuthParams();
+
+    public function getAuthOptions();
 } 

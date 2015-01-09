@@ -35,4 +35,15 @@ class AuthService implements AuthServiceInterface
         );
     }
 
+    public function getAuthOptions()
+    {
+        return array(
+            'auth' => array(
+                'eqn',
+                'EQN2014'
+            )
+        );
+    }
+
+
 }

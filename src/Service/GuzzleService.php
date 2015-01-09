@@ -55,7 +55,11 @@ class GuzzleService implements GuzzleServiceInterface
      */
     public function get($uri, $headers = array(), $params = array())
     {
-        $request = $this->client->get($this->getUrl(), $headers);
+        $request = $this->client->get(
+            $this->getUrl(),
+            $headers,
+            $this->getAuthSvc()->getAuthOptions()
+        );
 
         $params = array_merge(
             $params,

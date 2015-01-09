@@ -1,12 +1,12 @@
 <?php
 
-namespace Lequipe\Services\Videos;
+namespace Lequipe\Service\Video;
 /**
  * Description of SerializerVideos
  *
  * @author cguinet
  */
-class SerializerVideo implements SerializerVideosInterface{
+class SerializerVideo implements SerializerVideoInterface{
     
     public function serializeSearch($nb = 10 , $idtag = "" , $tri = "", $method = "") {
         //;

@@ -1,8 +1,8 @@
 <?php
 namespace Lequipe\Service;
 
-use Lequipe\Services\Videos\VideosLastInterface;
-use Lequipe\Services\Videos\VideosUneInterface;
+use Lequipe\Service\Video\LastVideoInterface;
+use Lequipe\Service\Video\UneVideoInterface;
 
 /**
  * Description of Video
@@ -13,16 +13,16 @@ class VideoService implements VideoServiceInterface{
     
     /**
      * 
-     * @var VideosLastInterface
+     * @var LastVideoInterface
      */
     private $lastSvc;
     
     /**
      * 
-     * @var VideosUneInterface
+     * @var UneVideoInterface
      */
     private $uneSvc;
-   
+
     public function getLastVideo($nb = 10, $idtag = "", $tri = "") {
         return $this->getLastSvc()->execute($nb, $idtag, $tri);
     }
@@ -30,34 +30,36 @@ class VideoService implements VideoServiceInterface{
     public function getUneVideo() {
         return $this->getUneSvc()->execute();
     }
-    
+
     /**
-     * @param VideosLastInterface $lastSvc
+     * @param \Lequipe\Service\Video\LastVideoInterface $lastSvc
      */
-    public function setLastSvc($lastSvc) {
+    public function setLastSvc($lastSvc)
+    {
         $this->lastSvc = $lastSvc;
     }
-    
+
     /**
-     * @return VideosLastInterface
+     * @return \Lequipe\Service\Video\LastVideoInterface
      */
-    public function getLastSvc() {
+    public function getLastSvc()
+    {
         return $this->lastSvc;
     }
-   
+
     /**
-     * @param VideosUneInterface $uneSvc
+     * @param \Lequipe\Service\Video\UneVideoInterface $uneSvc
      */
-    public function setUneSvc($uneSvc) {
+    public function setUneSvc($uneSvc)
+    {
         $this->uneSvc = $uneSvc;
     }
-    
+
     /**
-     * @return VideosUneInterface
+     * @return \Lequipe\Service\Video\UneVideoInterface
      */
-    public function getUneSvc() {
+    public function getUneSvc()
+    {
         return $this->uneSvc;
     }
-
- 
 }

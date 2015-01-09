@@ -67,12 +67,13 @@ class GuzzleService implements GuzzleServiceInterface
             $request->getQuery()->add($key, $value);
         }
 
-        try {
+        /*try {
             $result = $request->send();
         } catch (\Exception $e) {
             $apiException = $this->getExceptionService()->getApiException($e);
             throw $apiException;
-        }
+        }*/
+        $result = $request->send();
 
         return $result->json();
     }

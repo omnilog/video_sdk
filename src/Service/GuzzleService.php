@@ -68,7 +68,7 @@ class GuzzleService implements GuzzleServiceInterface
             $this->getUriParamSvc()->extractParamFromUri($uri),
             $this->getAuthSvc()->getAuthParams()
         );
-
+        
         foreach ($params as $key => $value) {
             $request->getQuery()->add($key, $value);
         }
@@ -81,13 +81,17 @@ class GuzzleService implements GuzzleServiceInterface
         }*/
         
         $result = $request->send();
-        //PATTERN STRATEGY 
         
-        /*
-         * force temporaire a xml pour test
-         */
-        return $result->xml();
-        //return $result->json();
+        //TMP en ATTENDANT LE PATTERN STRATEGY 
+        switch ($params['outputType']) {
+            case 'json' :
+                return $result->json();
+                break;
+            default :
+                return $result->xml();
+                break;
+        }
+
     }
 
     /**

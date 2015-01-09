@@ -17,7 +17,7 @@ class UneVideo extends AbstractVideo implements UneVideoInterface {
         $response = $this->getGuzzleSvc()->get(
             self::URI
         );
-        var_dump($response);die();
+
         return $this->getMapperSvc()->getVideos($response);
     }
 }

@@ -83,13 +83,17 @@ class GuzzleService implements GuzzleServiceInterface
         $result = $request->send();
         
         //TMP en ATTENDANT LE PATTERN STRATEGY 
-        switch ($params['outputType']) {
-            case 'json' :
-                return $result->json();
-                break;
-            default :
-                return $result->xml();
-                break;
+        if(isset($params['outputType'])) {
+            switch ($params['outputType']) {
+                case 'json' :
+                    return $result->json();
+                    break;
+                default :
+                    return $result->xml();
+                    break;
+            }
+        } else {
+            return $result->xml();
         }
 
     }

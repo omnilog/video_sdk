@@ -25,7 +25,7 @@ class LequipeFactory {
 
     public function __construct($url, $login, $password)
     {
-        $this->$url = $url;
+        $this->url = $url;
         $this->login = $login;
         $this->password = $password;
     }

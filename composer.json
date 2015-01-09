@@ -1,5 +1,5 @@
 {
-    "name": "omnilog/video_sdk",
+    "name": "omnilog/video-sdk",
     "description": "Client API Lequipe projet Video",
     "keywords": ["api", "rest"],
     "type": "library",

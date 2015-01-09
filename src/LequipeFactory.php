@@ -14,6 +14,7 @@ use Lequipe\Service\VideoService;
 //Mapper sport
 //Sport Service
 
+use Lequipe\Service\VideoServiceInterface;
 use Pimple\Container;
 
 class LequipeFactory {
@@ -29,6 +30,9 @@ class LequipeFactory {
         $this->password = $password;
     }
 
+    /**
+     * @return VideoServiceInterface
+     */
     public function getVideoService() {
         $container = $this->getContainer();
         return $container['service.video'];

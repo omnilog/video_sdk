@@ -9,8 +9,8 @@ namespace Lequipe\Service;
 
 interface VideoServiceInterface {
     
-    public function getLastVideo($uri = null, $nb = 10, $idtag = "", $tri = "");
+    public function getLastVideo($nb = 10, $idtag = "", $tri = "");
     
-    public function getUneVideo($uri = null);
+    public function getUneVideo();
     
 }

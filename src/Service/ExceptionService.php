@@ -1,6 +1,6 @@
 <?php
 
-namespace Lequipe\Services;
+namespace Lequipe\Service;
 
 /**
  * Description of ExceptionService

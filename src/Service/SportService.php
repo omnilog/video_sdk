@@ -1,13 +1,13 @@
 <?php
 
-namespace Lequipe\Services;
+namespace Lequipe\Service;
 
 /**
  * Description of SportsService
  *
  * @author cguinet
  */
-class SportsService implements SportsServiceInterface{
+class SportService implements SportServiceInterface{
     public function getSports() {
         //
     }

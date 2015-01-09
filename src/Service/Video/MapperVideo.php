@@ -1,6 +1,6 @@
 <?php
 
-namespace Lequipe\Services\Videos;
+namespace Lequipe\Service\Videos;
 
 use Lequipe\Entity\Video;
 
@@ -9,7 +9,7 @@ use Lequipe\Entity\Video;
  *
  * @author cguinet
  */
-class MapperVideo implements MapperVideosInterface{
+class MapperVideo implements MapperVideoInterface{
     
     public function populateVideo(Video $vid, $datas) {
         $vid->setId($datas['ID']);

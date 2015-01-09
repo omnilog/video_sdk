@@ -1,11 +1,11 @@
 <?php
 
-namespace Lequipe\Services;
+namespace Lequipe\Service;
 
 /**
  *
  * @author cguinet
  */
-interface SportsServiceInterface {
+interface SportServiceInterface {
     public function getSports();
 }

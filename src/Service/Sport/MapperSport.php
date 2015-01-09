@@ -1,6 +1,6 @@
 <?php
 
-namespace Lequipe\Services\Sports;
+namespace Lequipe\Services\Sport;
 
 use Lequipe\Entity\Sport;
 /**
@@ -8,7 +8,7 @@ use Lequipe\Entity\Sport;
  *
  * @author cguinet
  */
-class MapperSports implements MapperSportsInterface {
+class MapperSport implements MapperSportsInterface {
     public function populateSport(Sport $sport, $datas) {
         $sport->setIdSport($datas['IDSPORT']);
         $sport->setNom($datas['NOM']);

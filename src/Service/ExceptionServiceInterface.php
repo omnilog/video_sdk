@@ -1,6 +1,6 @@
 <?php
 
-namespace Lequipe\Services;
+namespace Lequipe\Service;
 
 use Lequipe\Exception\ApiException;
 

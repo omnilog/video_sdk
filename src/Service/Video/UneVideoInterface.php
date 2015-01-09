@@ -1,12 +1,12 @@
 <?php
 
-namespace Lequipe\Services\Videos;
+namespace Lequipe\Service\Video;
 
 /**
  *
  * @author cguinet
  */
-interface VideosUneInterface {
+interface UneVideoInterface {
     
     public function execute();
     

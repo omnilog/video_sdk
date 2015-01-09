@@ -6,9 +6,14 @@ namespace Lequipe\Services\Videos;
  *
  * @author cguinet
  */
-class SerializerVideos implements SerializerVideosInterface{
+class SerializerVideo implements SerializerVideosInterface{
     
     public function serializeSearch($nb = 10 , $idtag = "" , $tri = "", $method = "") {
         //;
+    }
+
+    public function serializeLast($nb, $idtag, $tri)
+    {
+        // TODO: Implement serializeLast() method.
     }
 }

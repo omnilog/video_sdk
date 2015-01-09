@@ -1,6 +1,6 @@
 <?php
 
-namespace Lequipe\Services;
+namespace Lequipe\Service;
 /**
  * Description of AbstractApiService
  *
@@ -8,8 +8,6 @@ namespace Lequipe\Services;
  */
 
 abstract class AbstractApiService {
-    
-    const URI = "http://qlf-ws.lequipe.fr/ws/index.php";
     /**
      * @var GuzzleInterface
      */

@@ -1,15 +1,15 @@
 <?php
-namespace Lequipe\Services;
+namespace Lequipe\Service;
 
 use Lequipe\Services\Videos\VideosLastInterface;
 use Lequipe\Services\Videos\VideosUneInterface;
 
 /**
- * Description of Videos
+ * Description of Video
  *
  * @author cguinet
  */
-class VideosService implements VideosServiceInterface{
+class VideoService implements VideoServiceInterface{
     
     /**
      * 
@@ -23,11 +23,11 @@ class VideosService implements VideosServiceInterface{
      */
     private $uneSvc;
    
-    public function getLastVideosSvc($nb = 10, $idtag = "", $tri = "") {
+    public function getLastVideo($nb = 10, $idtag = "", $tri = "") {
         return $this->getLastSvc()->execute($nb, $idtag, $tri);
     }
     
-    public function getUneVideosSvc() {
+    public function getUneVideo() {
         return $this->getUneSvc()->execute();
     }
     

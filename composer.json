@@ -1,5 +1,5 @@
 {
-    "name": "lequipe/ws_factory",
+    "name": "lequipe/sdk_video",
     "description": "Client API Lequipe projet Video",
     "keywords": ["api", "rest"],
     "type": "library",

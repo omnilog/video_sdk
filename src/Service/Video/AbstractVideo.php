@@ -1,16 +1,16 @@
 <?php
 
-namespace Lequipe\Services\Videos;
+namespace Lequipe\Service\Video;
 
-use Lequipe\Services\AbstractApiService;
+use Lequipe\Service\AbstractApiService;
 /**
  * Description of AbstractVideos
  *
  * @author cguinet
  */
-abstract class AbstractVideos extends AbstractApiService {
+abstract class AbstractVideo extends AbstractApiService {
 
-//    const URI = '/';
+    const URI = '';
 
     /**
      * @var MapperVideoInterface
@@ -18,13 +18,13 @@ abstract class AbstractVideos extends AbstractApiService {
     private $mapperSvc;
     
     /**
-     * @var SerializerVideosInterface
+     * @var SerializerVideoInterface
      */
     private $serialiserSvc;
 
 
     /**
-     * @param MapperVideosInterface $mapperSvc
+     * @param MapperVideoInterface $mapperSvc
      */
     public function setMapperSvc($mapperSvc)
     {
@@ -40,7 +40,7 @@ abstract class AbstractVideos extends AbstractApiService {
     }
     
     /**
-     * @param SerializerVideosInterface $serializerSvc
+     * @param SerializerVideoInterface $serializerSvc
      */
     public function setSerializerSvc($serializerSvc)
     {
@@ -48,7 +48,7 @@ abstract class AbstractVideos extends AbstractApiService {
     }
 
     /**
-     * @return SerializerVideosInterface
+     * @return SerializerVideoInterface
      */
     public function getSerializerSvc()
     {

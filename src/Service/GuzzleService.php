@@ -44,6 +44,7 @@ class GuzzleService implements GuzzleServiceInterface
 
         $this->url = $url;
     }
+    
 
     /**
      * Send a GET request
@@ -55,6 +56,7 @@ class GuzzleService implements GuzzleServiceInterface
      */
     public function get($uri, $headers = array(), $params = array())
     {
+    
         $request = $this->client->get(
             $this->getUrl(),
             $headers,
@@ -77,9 +79,15 @@ class GuzzleService implements GuzzleServiceInterface
             $apiException = $this->getExceptionService()->getApiException($e);
             throw $apiException;
         }*/
+        
         $result = $request->send();
-
-        return $result->json();
+        //PATTERN STRATEGY 
+        
+        /*
+         * force temporaire a xml pour test
+         */
+        return $result->xml();
+        //return $result->json();
     }
 
     /**

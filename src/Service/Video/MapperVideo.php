@@ -29,6 +29,7 @@ class MapperVideo implements MapperVideoInterface{
     
     public function getVideos($datas) {
         $videos = array();
+        var_dump($datas);die();
         foreach ($datas as $d) {
             $tmp = new Video();
             $this->populateVideo($tmp, $d);

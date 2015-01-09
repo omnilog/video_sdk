@@ -14,9 +14,9 @@ class UriParamService implements UriParamServiceInterface
     public function extractParamFromUri($uri)
     {
         $aRes = explode('/', $uri);
-        return [
+        return array(
             'class' => $aRes[0],
-            'methode' => $aRes[1]
-        ];
+            'method' => $aRes[1]
+        );
     }
 } 

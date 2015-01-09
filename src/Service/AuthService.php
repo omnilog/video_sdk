@@ -29,10 +29,10 @@ class AuthService implements AuthServiceInterface
 
     public function getAuthParams()
     {
-        return [
+        return array(
             'login' => $this->login,
             'password' => $this->password
-        ];
+        );
     }
 
 }

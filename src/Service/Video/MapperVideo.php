@@ -24,7 +24,7 @@ class MapperVideo implements MapperVideoInterface{
         $vid->setKeyword($datas['KEYWORD']);
         $vid->setNbVues($datas['NB_VUES']);
         $vid->setKeyword($datas['KEYWORD']);
-        //$vid->setTags($datas['TAGS']);
+        $vid->setTags($datas['TAGS']);
     }
     
     public function getVideos($datas) {

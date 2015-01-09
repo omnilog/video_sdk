@@ -6,7 +6,7 @@ use Lequipe\Service\AuthService;
 use Lequipe\Service\GuzzleService;
 use Lequipe\Service\UriParamService;
 use Lequipe\Service\Video\UneVideo;
-use Lequipe\Service\Videos\MapperVideo;
+use Lequipe\Service\Video\MapperVideo;
 use Lequipe\Service\VideoService;
 
 //Service restants à créer :

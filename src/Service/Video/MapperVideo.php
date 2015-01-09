@@ -1,6 +1,6 @@
 <?php
 
-namespace Lequipe\Service\Videos;
+namespace Lequipe\Service\Video;
 
 use Lequipe\Entity\Video;
 

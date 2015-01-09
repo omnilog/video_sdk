@@ -1,5 +1,5 @@
 {
-    "name": "lequipe/ws_factory",
+    "name": "omnilog/video-sdk",
     "description": "Client API Lequipe projet Video",
     "keywords": ["api", "rest"],
     "type": "library",

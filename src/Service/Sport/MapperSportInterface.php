@@ -1,6 +1,6 @@
 <?php
 
-namespace Lequipe\Service\Sports;
+namespace Lequipe\Service\Sport;
 
 use Lequipe\Entity\Sport;
 

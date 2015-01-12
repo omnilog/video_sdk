@@ -15,7 +15,7 @@ class MapperSport implements MapperSportInterface {
     }
     
     public function getSports($datas) {
-        $sports = [];
+        $sports = array();
         foreach ($data as $d) {
             $tmp = new Sport();
             $this->populateSport($tmp, $d);

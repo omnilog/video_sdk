@@ -39,7 +39,7 @@ class VideoService implements VideoServiceInterface{
     }
     
     public function getTypeHomeVideo($idtag) {
-        return $this->getTypeHomeSvc($idtag);
+        return $this->getTypeHomeSvc()->execute($idtag);
     }
 
     /**

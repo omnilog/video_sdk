@@ -13,4 +13,6 @@ interface VideoServiceInterface {
     
     public function getUneVideo();
     
+    public function getTypeHomeVideo($idtag);
+    
 }

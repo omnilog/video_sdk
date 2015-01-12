@@ -43,7 +43,7 @@ class LequipeFactory {
     /**
      * @return SportServiceInterface
      */
-    public function getSportServic() {
+    public function getSportService() {
         $container = $this->getContainer();
         return $container['service.sport'];
     }

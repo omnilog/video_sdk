@@ -6,15 +6,16 @@ use Lequipe\Service\AuthService;
 use Lequipe\Service\GuzzleService;
 use Lequipe\Service\UriParamService;
 use Lequipe\Service\Video\UneVideo;
+use Lequipe\Service\Video\LastVideo;
 use Lequipe\Service\Video\MapperVideo;
+use Lequipe\Service\Video\SerializerVideo;
 use Lequipe\Service\VideoService;
-
-//Service restants à créer :
-
-//Mapper sport
-//Sport Service
-
 use Lequipe\Service\VideoServiceInterface;
+
+use Lequipe\Service\SportService;
+use Lequipe\Service\Sport\Sport;
+use Lequipe\Service\Sport\MapperSport;
+
 use Pimple\Container;
 
 class LequipeFactory {
@@ -71,6 +72,11 @@ class LequipeFactory {
         $container['service.video.mapper'] = function($c) {
             return new MapperVideo();
         };
+        
+        //SerializerVideo
+        $container['service.video.serializer'] = function($c) {
+            return new SerializerVideo();
+        };
 
         // UneVideo
         $container['service.video.une'] = function ($c) {
@@ -81,99 +87,55 @@ class LequipeFactory {
             return $svc;
         };
 
+        // LastVideos
+        $container['service.video.last'] = function ($c) {
+            $svc = new LastVideo();
+            $svc->setGuzzleSvc($c['service.guzzle']);
+            $svc->setMapperSvc($c['service.video.mapper']);
+            $svc->setSerializer($c['service.video.serializer']);
+            return $svc;
+        };
+        
+        //TypeHomeVideos
+        $container['service.video.typeHome'] = function($c) {
+            $svc = new Lequipe\Service\Video\TypeHomeVideo();
+            $svc->setGuzzleSvc($c['service.guzzle']);
+            $svc->setMapperSvc($c['service.video.mapper']);
+            $svc->setSerializer($c['service.video.serializer']);
+            return $svc;
+        };
+        
         // VideoService
         $container['service.video'] = function ($c) {
             $svc = new VideoService();
             $svc->setUneSvc($c['service.video.une']);
-
+            $svc->setLastSvc($c['service.video.last']);
+            $svc->setTypeHomeSvc($c['service.video.typeHome']);
+            return $svc;
+        };
+        
+        // MapperSport
+        $container['service.sport.mapper'] = function($c) {
+            return new MapperSport();
+        };
+        
+        //Sports
+        $container['service.sport.sport'] = function($c) {
+            $svc = new Sport;
+            $svc->setGuzzleSvc($c['service.guzzle']);
+            $svc->setMapperSvc($c['service.sport.mapper']);
+            return $svc;
+        };
+        
+        //SportService
+        $container['service.sport'] = function($c) {
+            $svc = new SportService;
+            $svc->setSportSvc($c['service.sport.sport']);
             return $svc;
         };
 
         return $container;
     }
-
-//    public function getContainer($url, $apiKey) {
-//        $container = new Container();
-//
-//        $container['url'] = $url;
-//        $container['apikey'] = $apiKey;
-//
-//        // ExceptionService
-//        $container['service.exception'] = function ($c) {
-//            return new ExceptionService();
-//        };
-//
-//        // GuzzleService
-//        $container['service.guzzle'] = function ($c) {
-//            $svc = new GuzzleService();
-//            $svc->setUrl($c['api_url']);
-//            $svc->setExceptionService($c['service.exception']);
-//            return $svc;
-//        };
-//
-//        // MapperVideos
-//        $container['service.videos.mapper'] = function ($c) {
-//            return new MapperVideo();
-//        };
-//
-//        // SerializerVideos
-//        $container['service.videos.serializer'] = function ($c) {
-//            return new SerializerVideo();
-//        };
-//        //getLastVideos
-//        $container['service.videos.last'] = function ($c) {
-//            $svc = new VideosLast();
-//            $svc->setGuzzleSvc($c['service.guzzle']);
-//            $svc->setMapperSvc($c['service.videos.mapper']);
-//            $svc->setSerializerSvc($c['service.videos.serializer']);
-//            return $svc;
-//        };
-//
-//        //getVideosUne
-//        $container['service.videos.une'] = function ($c) {
-//            $svc = new VideosUne();
-//            $svc->setGuzzleSvc($c['service.guzzle']);
-//            $svc->setMapperSvc($c['service.videos.mapper']);
-//            $svc->setSerializerSvc($c['service.videos.serializer']);
-//            return $svc;
-//        };
-//
-//        //service videos
-//        $container['service.videos'] = function($c) {
-//            $svc = new VideosService();
-//            $svc->setLastSvc($c['service.videos.last']);
-//            $svc->setUneSvc($c['service.videos.une']);
-//        };
-//
-//        // MapperSports
-//        $container['service.sports.mapper'] = function ($c) {
-//            return new MapperSport();
-//        };
-//
-//        /*
-//
-//
-//        //getSports
-//        $container['service.sport.search'] = function ($c) {
-//            $svc = new SportsSearch();
-//            //$svc->setGuzzleSvc($c['service.guzzle']);
-//            $svc->setMapperSvc($c['service.sports.mapper']);
-//            $svc->setSerializerSvc($c['service.sports.serializer']);
-//            return $svc;
-//        };
-//
-//        //service sport
-//         $container['service.sports'] = function ($c) {
-//            $svc = new SportService();
-//            $svc->setSearchSvc($c['service.sport.search']);
-//        };
-//
-//         * *
-//        */
-//
-//        return $container;
-//    }
-   
     
 }
 

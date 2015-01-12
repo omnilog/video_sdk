@@ -6,7 +6,7 @@ namespace Lequipe\Service\Sport;
  *
  * @author cguinet
  */
-class Sport extends AbstractSport implements SportInterface {
+class ListSport extends AbstractSport implements ListSportInterface {
     
     const URI = 'sports/getSports';
     

@@ -7,13 +7,14 @@ use Lequipe\Service\GuzzleService;
 use Lequipe\Service\UriParamService;
 use Lequipe\Service\Video\UneVideo;
 use Lequipe\Service\Video\LastVideo;
+use Lequipe\Service\Video\TypeHomeVideo;
 use Lequipe\Service\Video\MapperVideo;
 use Lequipe\Service\Video\SerializerVideo;
 use Lequipe\Service\VideoService;
 use Lequipe\Service\VideoServiceInterface;
 
 use Lequipe\Service\SportService;
-use Lequipe\Service\Sport\Sport;
+use Lequipe\Service\Sport\ListSport;
 use Lequipe\Service\Sport\MapperSport;
 use Lequipe\Service\SportServiceInterface;
 
@@ -107,7 +108,7 @@ class LequipeFactory {
         
         //TypeHomeVideos
         $container['service.video.typeHome'] = function($c) {
-            $svc = new Lequipe\Service\Video\TypeHomeVideo();
+            $svc = new TypeHomeVideo();
             $svc->setGuzzleSvc($c['service.guzzle']);
             $svc->setMapperSvc($c['service.video.mapper']);
             $svc->setSerializer($c['service.video.serializer']);
@@ -129,8 +130,8 @@ class LequipeFactory {
         };
         
         //Sports
-        $container['service.sport.sport'] = function($c) {
-            $svc = new Sport;
+        $container['service.sport.list'] = function($c) {
+            $svc = new ListSport();
             $svc->setGuzzleSvc($c['service.guzzle']);
             $svc->setMapperSvc($c['service.sport.mapper']);
             return $svc;
@@ -138,8 +139,8 @@ class LequipeFactory {
         
         //SportService
         $container['service.sport'] = function($c) {
-            $svc = new SportService;
-            $svc->setSportSvc($c['service.sport.sport']);
+            $svc = new SportService();
+            $svc->setListSportSvc($c['service.sport.list']);
             return $svc;
         };
 

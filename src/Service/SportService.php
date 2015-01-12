@@ -2,7 +2,7 @@
 
 namespace Lequipe\Service;
 
-use Lequipe\Service\Sport\SportInterface;
+use Lequipe\Service\Sport\ListSportInterface;
 /**
  * Description of SportsService
  *
@@ -12,25 +12,25 @@ class SportService implements SportServiceInterface{
     
     /**
      * 
-     * @var SportInterface
+     * @var ListSportInterface
      */
-    private $sportSvc;
+    private $listSportSvc;
     
     /**
-     * @return \Lequipe\Service\Video\SportInterface
+     * @return \Lequipe\Service\Sport\ListSportInterface
      */
-    function getSportSvc() {
-        return $this->sportSvc;
+    function getListSportSvc() {
+        return $this->listSportSvc;
     }
     
     /**
-     * @param \Lequipe\Service\Video\SportInterface $sportSvc
+     * @param \Lequipe\Service\Sport\ListSportInterface $listSportSvc
      */
-    function setSportSvc($sportSvc) {
-        $this->sportSvc = $sportSvc;
+    function setListSportSvc($listSportSvc) {
+        $this->listSportSvc = $listSportSvc;
     }
 
     public function getSport() {
-        return $this->getSportSvc()->execute();
+        return $this->getListSportSvc()->execute();
     }
 }

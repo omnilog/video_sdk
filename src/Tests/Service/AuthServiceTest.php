@@ -18,10 +18,23 @@ class AuthServiceTest extends \PHPUnit_Framework_TestCase {
         $login = "toto";
         $password = "tata";
         $Auth = new \Lequipe\Service\AuthService($login, $password);
-        $actual = array(
+        $expected = array(
             'login' => $login,
             'password' => $password
         );
-        $this->assertEquals($actual, $Auth->getAuthParams());
+        $this->assertEquals($expected, $Auth->getAuthParams());
+    }
+    
+    public function testGetAuthOptions() {
+        $expected = array(
+            'auth' => array(
+                'eqn',
+                'EQN2014'
+            )
+        );
+        $login = "toto";
+        $password = "tata";
+        $Auth = new \Lequipe\Service\AuthService($login, $password);
+        $this->assertEquals($expected, $Auth->getAuthOptions());
     }
 }

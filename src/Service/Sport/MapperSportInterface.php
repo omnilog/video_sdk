@@ -1,6 +1,6 @@
 <?php
 
-namespace Lequipe\Services\Sports;
+namespace Lequipe\Service\Sports;
 
 use Lequipe\Entity\Sport;
 
@@ -8,6 +8,6 @@ use Lequipe\Entity\Sport;
  *
  * @author cguinet
  */
-interface MapperSportsInterface {
+interface MapperSportInterface {
     public function populateSport(Sport $sport, $datas);
 }

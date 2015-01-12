@@ -15,6 +15,7 @@ use Lequipe\Service\VideoServiceInterface;
 use Lequipe\Service\SportService;
 use Lequipe\Service\Sport\Sport;
 use Lequipe\Service\Sport\MapperSport;
+use Lequipe\Service\SportServiceInterface;
 
 use Pimple\Container;
 
@@ -39,6 +40,14 @@ class LequipeFactory {
         return $container['service.video'];
     }
 
+    /**
+     * @return SportServiceInterface
+     */
+    public function getSportServic() {
+        $container = $this->getContainer();
+        return $container['service.sport'];
+    }
+    
     private function getContainer()
     {
         $container = new Container();

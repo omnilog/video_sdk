@@ -3,7 +3,7 @@
 namespace Lequipe\Service\Video;
 
 use Lequipe\Entity\Video;
-
+use Lequipe\Entity\TypeVideo;
 /**
  * Description of MapperVideo
  *
@@ -36,5 +36,14 @@ class MapperVideo implements MapperVideoInterface{
             unset($tmp);
         }
         return $videos;
+    }
+    public function populateTypeVideo(TypeVideo $typeVid, $datas) {
+        $typeVid->setId($datas['ID']);
+        $typeVid->setType($datas['TYPE']);
+    }
+    
+    public function getTypeVideos($datas) {
+        $tmp = new TypeVideo();
+        $this->populateTypeVideo($tmp, $datas);
     }
 }

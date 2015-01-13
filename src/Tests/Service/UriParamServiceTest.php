@@ -17,6 +17,6 @@ class UriParamServiceTest  extends \PHPUnit_Framework_TestCase {
         $testUri = "toto/tata";
         $svcUri = new Lequipe\Service\UriParamService();
         $actual = array("class" => "toto", "method" => "tata");
-        $this->assertEquals( $svcUri->extractParamFromUri($testUri), $actual);
+        $this->assertEquals( $actual, $svcUri->extractParamFromUri($testUri));
     }
 }

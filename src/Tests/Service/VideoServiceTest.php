@@ -15,7 +15,7 @@ class VideoServiceTest extends \PHPUnit_Framework_TestCase {
     }
     
     public function testGetLast() {
-        $mock = $this->getMock('\Lequipe\Service\Video\UneVideo', array('execute'));
+        $mock = $this->getMock('\Lequipe\Service\Video\LastVideo', array('execute'));
         $mock
             ->expects($this->once())
             ->method('execute')

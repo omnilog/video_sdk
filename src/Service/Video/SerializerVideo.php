@@ -2,7 +2,7 @@
 
 namespace Lequipe\Service\Video;
 /**
- * Description of SerializerVideos
+ * Description of SerializerVideo
  *
  * @author cguinet
  */

@@ -23,7 +23,6 @@ class MapperVideo implements MapperVideoInterface{
         $vid->setIdSport($datas['IDSPORT']);
         $vid->setKeyword($datas['KEYWORD']);
         $vid->setNbVues($datas['NB_VUES']);
-        $vid->setKeyword($datas['KEYWORD']);
         $vid->setTags($datas['TAGS']);
     }
     

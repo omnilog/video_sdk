@@ -67,6 +67,14 @@ class Video {
     }
     
     /**
+     * return the title of the video
+     * @return string
+     */
+    public function getTitle() {
+        return $this->title;
+    }
+    
+    /**
      * return the surtitle1 of the video
      * @return string
      */

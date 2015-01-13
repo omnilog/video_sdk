@@ -20,7 +20,7 @@ abstract class AbstractVideo extends AbstractApiService {
     /**
      * @var SerializerVideoInterface
      */
-    private $serialiserSvc;
+    private $serializerSvc;
 
 
     /**
@@ -44,7 +44,7 @@ abstract class AbstractVideo extends AbstractApiService {
      */
     public function setSerializerSvc($serializerSvc)
     {
-        $this->mapperSvc = $mapperSvc;
+        $this->serializerSvc = $serializerSvc;
     }
 
     /**

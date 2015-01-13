@@ -15,8 +15,8 @@ class TypeHomeVideo  extends AbstractVideo implements TypeHomeVideoInterface{
        
         $response = $this->getGuzzleSvc()->get(
             self::URI, 
-                "", 
-                $this->getSerializerSvc()->serializeTypeHome($idtag)
+            "", 
+            $this->getSerializerSvc()->serializeTypeHome($idtag)
         );
         return $this->getMapperSvc()->getTypeVideos($response);
     }

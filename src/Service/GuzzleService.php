@@ -29,6 +29,11 @@ class GuzzleService implements GuzzleServiceInterface
      * @var AuthServiceInterface
      */
     private $authSvc;
+    
+    /**
+     * @var DataFormatterInterface
+     */
+    private $dataFormatterSvc;
 
     /**
      * @var ExceptionServiceInterface
@@ -67,23 +72,28 @@ class GuzzleService implements GuzzleServiceInterface
             $params,
             $this->getUriParamSvc()->extractParamFromUri($uri),
             $this->getAuthSvc()->getAuthParams()
+                
         );
         
         foreach ($params as $key => $value) {
             $request->getQuery()->add($key, $value);
         }
 
-        /*try {
+        try {
             $result = $request->send();
         } catch (\Exception $e) {
             $apiException = $this->getExceptionService()->getApiException($e);
             throw $apiException;
-        }*/
+        }
         
         $result = $request->send();
         
+        // recupération du format
+        return $result->$this->getDataFormatterSvc()->getFormat($format);
+        
+        
         //TMP en ATTENDANT LE PATTERN STRATEGY 
-        if(isset($params['outputType'])) {
+        /*if(isset($params['outputType'])) {
             switch ($params['outputType']) {
                 case 'json' :
                     return $result->json();
@@ -94,7 +104,7 @@ class GuzzleService implements GuzzleServiceInterface
             }
         } else {
             return $result->xml();
-        }
+        }*/
 
     }
 
@@ -115,7 +125,7 @@ class GuzzleService implements GuzzleServiceInterface
     }
 
     /**
-     * @param \Lequipe\Services\ExceptionServiceInterface $exceptionService
+     * @param \Lequipe\Service\ExceptionServiceInterface $exceptionService
      */
     public function setExceptionService($exceptionService)
     {
@@ -123,7 +133,7 @@ class GuzzleService implements GuzzleServiceInterface
     }
 
     /**
-     * @return \Lequipe\Services\ExceptionServiceInterface
+     * @return \Lequipe\Service\ExceptionServiceInterface
      */
     public function getExceptionService()
     {
@@ -131,7 +141,7 @@ class GuzzleService implements GuzzleServiceInterface
     }
 
     /**
-     * @param \Lequipe\Service\UriParamServiceInterface $uriParamSvc
+     * @param UriParamServiceInterface $uriParamSvc
      */
     public function setUriParamSvc($uriParamSvc)
     {
@@ -139,7 +149,7 @@ class GuzzleService implements GuzzleServiceInterface
     }
 
     /**
-     * @return \Lequipe\Service\UriParamServiceInterface
+     * @return UriParamServiceInterface
      */
     public function getUriParamSvc()
     {
@@ -147,7 +157,7 @@ class GuzzleService implements GuzzleServiceInterface
     }
 
     /**
-     * @param \Lequipe\Service\AuthServiceInterface $authSvc
+     * @param AuthServiceInterface $authSvc
      */
     public function setAuthSvc($authSvc)
     {
@@ -155,10 +165,26 @@ class GuzzleService implements GuzzleServiceInterface
     }
 
     /**
-     * @return \Lequipe\Service\AuthServiceInterface
+     * @return AuthServiceInterface
      */
     public function getAuthSvc()
     {
         return $this->authSvc;
     }
+    
+    /**
+     * @return DataFormatterInterface
+     */
+    function getDataFormatterSvc() {
+        return $this->dataFormatterSvc;
+    }
+
+    /**
+     * @param DataFormatterInterface $dataFormatterSvc
+     */
+    function setDataFormatterSvc($dataFormatterSvc) {
+        $this->dataFormatterSvc = $dataFormatterSvc;
+    }
+
+
 }

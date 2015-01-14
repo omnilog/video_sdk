@@ -5,6 +5,7 @@ namespace Lequipe;
 use Lequipe\Service\AuthService;
 use Lequipe\Service\GuzzleService;
 use Lequipe\Service\UriParamService;
+use Lequipe\Service\DataFormatter;
 use Lequipe\Service\Video\UneVideo;
 use Lequipe\Service\Video\LastVideo;
 use Lequipe\Service\Video\TypeHomeVideo;
@@ -25,12 +26,14 @@ class LequipeFactory {
     private $url = null;
     private $login = null;
     private $password = null;
+    private $format = null;
 
-    public function __construct($url, $login, $password)
+    public function __construct($url, $login, $password, $format)
     {
         $this->url = $url;
         $this->login = $login;
         $this->password = $password;
+        $this->format = $format;
     }
 
     /**
@@ -57,7 +60,13 @@ class LequipeFactory {
         $container['url'] = $this->url;
         $container['login'] = $this->login;
         $container['password'] = $this->password;
+        $container['format'] = $this->format;
 
+        //DataFormatter
+        $container['service.data_formatter'] = function ($c) {
+            return new DataFormatter($c['format']);
+        };
+        
         // UriParamService
         $container['service.uri_param'] = function ($c) {
             return new UriParamService();
@@ -72,6 +81,7 @@ class LequipeFactory {
         // GuzzleService
         $container['service.guzzle'] = function ($c) {
             $svc = new GuzzleService($c['url']);
+            $svc->setDataFormatter($c['service.data_formatter']);
             $svc->setAuthSvc($c['service.auth']);
             $svc->setUriParamSvc($c['service.uri_param']);
 
@@ -102,7 +112,7 @@ class LequipeFactory {
             $svc = new LastVideo();
             $svc->setGuzzleSvc($c['service.guzzle']);
             $svc->setMapperSvc($c['service.video.mapper']);
-            $svc->setSerializer($c['service.video.serializer']);
+            $svc->setSerializerSvc($c['service.video.serializer']);
             return $svc;
         };
         
@@ -111,7 +121,7 @@ class LequipeFactory {
             $svc = new TypeHomeVideo();
             $svc->setGuzzleSvc($c['service.guzzle']);
             $svc->setMapperSvc($c['service.video.mapper']);
-            $svc->setSerializer($c['service.video.serializer']);
+            $svc->setSerializerSvc($c['service.video.serializer']);
             return $svc;
         };
         

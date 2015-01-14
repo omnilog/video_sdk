@@ -4,6 +4,7 @@ namespace Lequipe\Service;
 use Lequipe\Service\Video\LastVideoInterface;
 use Lequipe\Service\Video\UneVideoInterface;
 use Lequipe\Service\Video\TypeHomeVideoInterface;
+use Lequipe\Service\Video\SearchVideoInterface;
 
 /**
  * Description of Video
@@ -29,6 +30,12 @@ class VideoService implements VideoServiceInterface{
      * @var TypeHomeVideoInterface
      */
     private $typeHomeSvc;
+    
+    /**
+     * 
+     * @var SearchVideoInterface
+     */
+    private $searchSvc;
 
     public function getLastVideo($nb = 10, $idtag = "", $tri = "") {
         return $this->getLastSvc()->execute($nb, $idtag, $tri);
@@ -42,6 +49,10 @@ class VideoService implements VideoServiceInterface{
         return $this->getTypeHomeSvc()->execute($idtag);
     }
 
+    public function getSearchVideo($term, $nb = 10) {
+        return $this->getSearchSvc()->execute($term, $nb);
+    }
+    
     /**
      * @param \Lequipe\Service\Video\LastVideoInterface $lastSvc
      */
@@ -87,6 +98,21 @@ class VideoService implements VideoServiceInterface{
     function setTypeHomeSvc($typeHomeSvc) {
         $this->typeHomeSvc = $typeHomeSvc;
     }
+
+    /**
+     * @return \Lequipe\Service\Video\SearchVideoInterface
+     */
+    function getSearchSvc() {
+        return $this->searchVideoSvc;
+    }
+
+    /**
+     * @param \Lequipe\Service\Video\SearchVideoInterface $searchSvc
+     */
+    function setSearchSvc($searchVideoSvc) {
+        $this->searchVideoSvc = $searchVideoSvc;
+    }
+
 
 
 }

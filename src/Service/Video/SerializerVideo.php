@@ -22,4 +22,11 @@ class SerializerVideo implements SerializerVideoInterface{
             "idtag" => $idtag
         );
     }
+    
+    public function serializeSearch($term, $nb) {
+        return array(
+            "recherche" => $term,
+            "nb" => $nb
+        );
+    }
 }

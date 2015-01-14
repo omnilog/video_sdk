@@ -12,4 +12,6 @@ interface SerializerVideoInterface {
     
     public function serializeTypeHome($idtag);
     
+    public function serializeSearch($term, $nb);
+    
 }

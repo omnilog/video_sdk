@@ -9,6 +9,7 @@ use Lequipe\Service\DataFormatterService;
 use Lequipe\Service\Video\UneVideo;
 use Lequipe\Service\Video\LastVideo;
 use Lequipe\Service\Video\TypeHomeVideo;
+use Lequipe\Service\Video\SearchVideo;
 use Lequipe\Service\Video\MapperVideo;
 use Lequipe\Service\Video\SerializerVideo;
 use Lequipe\Service\VideoService;
@@ -125,12 +126,22 @@ class LequipeFactory {
             return $svc;
         };
         
+        //SearchVideos
+        $container['service.video.search'] = function($c) {
+            $svc = new SearchVideo();
+            $svc->setGuzzleSvc($c['service.guzzle']);
+            $svc->setMapperSvc($c['service.video.mapper']);
+            $svc->setSerializerSvc($c['service.video.serializer']);
+            return $svc;
+        };
+        
         // VideoService
         $container['service.video'] = function ($c) {
             $svc = new VideoService();
             $svc->setUneSvc($c['service.video.une']);
             $svc->setLastSvc($c['service.video.last']);
             $svc->setTypeHomeSvc($c['service.video.typeHome']);
+            $svc->setSearchSvc($c['service.video.search']);
             return $svc;
         };
         

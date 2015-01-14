@@ -15,4 +15,6 @@ interface VideoServiceInterface {
     
     public function getTypeHomeVideo($idtag);
     
+    public function getSearchVideo($term, $nb = 10);
+    
 }

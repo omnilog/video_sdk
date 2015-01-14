@@ -7,7 +7,7 @@ namespace Lequipe\Service\Video;
  *
  * @author cguinet
  */
-class SearchVideo implements SearchVideoInterface {
+class SearchVideo extends AbstractVideo implements SearchVideoInterface {
     const URI = 'videos2/searchVideos';
     
     public function execute($term, $nb = 10) {

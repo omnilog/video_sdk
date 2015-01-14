@@ -11,9 +11,9 @@ use Lequipe\Entity\TypeVideo;
 interface MapperVideoInterface {
     public function populateVideo(Video $vid, $datas);
     
-    public function getVideos($datas);
+    public function getVideos($datas, $format);
             
     public function populateTypeVideo(TypeVideo $typeVid, $datas);
     
-    public function getTypeVideos($datas);
+    public function getTypeVideos($datas, $format);
 }

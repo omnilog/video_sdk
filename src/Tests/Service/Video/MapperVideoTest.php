@@ -74,7 +74,7 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase {
                     'NB_VUES' =>  '10520',
                     'TAGS' => 'Tag2'
                 )
-            )
+            ), 'xml'
         );
         
         $vid1 = new \Lequipe\Entity\Video();

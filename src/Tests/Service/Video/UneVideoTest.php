@@ -53,7 +53,7 @@ class UneVideoTest extends \PHPUnit_Framework_TestCase {
         $svc = new \Lequipe\Service\Video\UneVideo();
         $svc->setGuzzleSvc($mockGuzzle);
         $svc->setMapperSvc($mockMapperSvc);
-        $this->assertEquals('OK getVideos', $svc->execute());
+        $this->assertEquals('OK getVideos', $svc->execute('xml'));
         
     }
 }

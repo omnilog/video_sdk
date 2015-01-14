@@ -9,7 +9,7 @@ class VideoServiceTest extends \PHPUnit_Framework_TestCase {
             ->method('execute')
             ->willReturn('uneSvc');
         
-        $svc = new \Lequipe\Service\VideoService();
+        $svc = new \Lequipe\Service\VideoService('xml');
         $svc->setUneSvc($mock);
         $this->assertEquals('uneSvc', $svc->getUneVideo());
     }
@@ -21,7 +21,7 @@ class VideoServiceTest extends \PHPUnit_Framework_TestCase {
             ->method('execute')
             ->willReturn('lastSvc');
         
-        $svc = new \Lequipe\Service\VideoService();
+        $svc = new \Lequipe\Service\VideoService('xml');
         $svc->setLastSvc($mock);
         $this->assertEquals('lastSvc', $svc->getLastVideo());
     }
@@ -33,7 +33,7 @@ class VideoServiceTest extends \PHPUnit_Framework_TestCase {
             ->method('execute')
             ->willReturn('typeHomeSvc');
         
-        $svc = new \Lequipe\Service\VideoService();
+        $svc = new \Lequipe\Service\VideoService('xml');
         $svc->setTypeHomeSvc($mock);
         $this->assertEquals('typeHomeSvc', $svc->getTypeHomeVideo(48));   
     }
@@ -45,7 +45,7 @@ class VideoServiceTest extends \PHPUnit_Framework_TestCase {
             ->method('execute')
             ->willReturn('searchSvc');
         
-        $svc = new \Lequipe\Service\VideoService();
+        $svc = new \Lequipe\Service\VideoService('xml');
         $svc->setSearchSvc($mock);
         $this->assertEquals('searchSvc', $svc->getSearchVideo("ribery"));
         

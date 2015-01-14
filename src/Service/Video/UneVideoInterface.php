@@ -8,6 +8,6 @@ namespace Lequipe\Service\Video;
  */
 interface UneVideoInterface {
     
-    public function execute();
+    public function execute($format);
     
 }

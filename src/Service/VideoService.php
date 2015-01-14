@@ -13,6 +13,12 @@ use Lequipe\Service\Video\SearchVideoInterface;
  */
 class VideoService implements VideoServiceInterface{
     
+    private $format = null;
+    
+    public function __construct($format) {
+        $this->format = $format;
+    }
+    
     /**
      * 
      * @var LastVideoInterface
@@ -38,19 +44,23 @@ class VideoService implements VideoServiceInterface{
     private $searchSvc;
 
     public function getLastVideo($nb = 10, $idtag = "", $tri = "") {
-        return $this->getLastSvc()->execute($nb, $idtag, $tri);
+        $format = $this->getFormat();
+        return $this->getLastSvc()->execute($nb, $idtag, $tri, $format);
     }
     
     public function getUneVideo() {
-        return $this->getUneSvc()->execute();
+        $format = $this->getFormat();
+        return $this->getUneSvc()->execute($format);
     }
     
     public function getTypeHomeVideo($idtag) {
-        return $this->getTypeHomeSvc()->execute($idtag);
+        $format = $this->getFormat();
+        return $this->getTypeHomeSvc()->execute($idtag, $format);
     }
 
     public function getSearchVideo($term, $nb = 10) {
-        return $this->getSearchSvc()->execute($term, $nb);
+        $format = $this->getFormat();
+        return $this->getSearchSvc()->execute($term, $nb, $format);
     }
     
     /**
@@ -113,6 +123,8 @@ class VideoService implements VideoServiceInterface{
         $this->searchVideoSvc = $searchVideoSvc;
     }
 
-
+    public function getFormat() {
+        return $this->format;
+    }
 
 }

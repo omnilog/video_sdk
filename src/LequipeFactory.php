@@ -137,7 +137,7 @@ class LequipeFactory {
         
         // VideoService
         $container['service.video'] = function ($c) {
-            $svc = new VideoService();
+            $svc = new VideoService($c['format']);
             $svc->setUneSvc($c['service.video.une']);
             $svc->setLastSvc($c['service.video.last']);
             $svc->setTypeHomeSvc($c['service.video.typeHome']);

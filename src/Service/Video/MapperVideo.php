@@ -26,7 +26,7 @@ class MapperVideo implements MapperVideoInterface{
         $vid->setTags($datas['TAGS']);
     }
     
-    public function getVideos($datas) {
+    public function getVideos($datas, $format) {
         $videos = array();
         foreach ($datas as $d) {
             $tmp = new Video();
@@ -41,7 +41,7 @@ class MapperVideo implements MapperVideoInterface{
         $typeVid->setType($datas['TYPE']);
     }
     
-    public function getTypeVideos($datas) {
+    public function getTypeVideos($datas,$format) {
         $tmp = new TypeVideo();
         $this->populateTypeVideo($tmp, $datas);
     }

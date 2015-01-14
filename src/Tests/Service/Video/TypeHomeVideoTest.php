@@ -36,6 +36,6 @@ class TypeHomeVideoTest extends \PHPUnit_Framework_TestCase {
         $svc->setGuzzleSvc($mockGuzzle);
         $svc->setSerializerSvc($mockSerializerSvc);
         $svc->setMapperSvc($mockMapperSvc);
-        $this->assertEquals('OK getTypeVideos', $svc->execute(42));
+        $this->assertEquals('OK getTypeVideos', $svc->execute(42, 'xml'));
     }
 }

@@ -8,5 +8,5 @@ namespace Lequipe\Service\Video;
  */
 
 interface TypeHomeVideoInterface {
-    public function execute($idTag);
+    public function execute($idTag, $format);
 }

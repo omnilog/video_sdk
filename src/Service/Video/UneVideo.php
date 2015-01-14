@@ -12,11 +12,11 @@ class UneVideo extends AbstractVideo implements UneVideoInterface {
     
     const URI = 'videos2/getVideosUne';
     
-    public function execute() {
+    public function execute($format) {
        
         $response = $this->getGuzzleSvc()->get(
             self::URI
         );
-        return $this->getMapperSvc()->getVideos($response);
+        return $this->getMapperSvc()->getVideos($response, $format);
     }
 }

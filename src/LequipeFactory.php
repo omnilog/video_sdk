@@ -64,7 +64,7 @@ class LequipeFactory {
 
         //DataFormatter
         $container['service.data_formatter'] = function ($c) {
-            return new DataFormatter($c['format']);
+            return new DataFormatterService($c['format']);
         };
         
         // UriParamService

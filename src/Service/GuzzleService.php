@@ -88,24 +88,12 @@ class GuzzleService implements GuzzleServiceInterface
         
         $result = $request->send();
         
-        // recupération du format
-        return $result->$this->getDataFormatterSvc()->getFormat($format);
-        
-        
-        //TMP en ATTENDANT LE PATTERN STRATEGY 
-        /*if(isset($params['outputType'])) {
-            switch ($params['outputType']) {
-                case 'json' :
-                    return $result->json();
-                    break;
-                default :
-                    return $result->xml();
-                    break;
-            }
+        if ($this->getDataFormatterSvc()->getFormat($format) == 'json') {
+            return $result->json();
         } else {
             return $result->xml();
-        }*/
-
+        }
+        
     }
 
     /**

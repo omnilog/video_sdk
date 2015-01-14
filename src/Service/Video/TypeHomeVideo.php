@@ -11,14 +11,14 @@ class TypeHomeVideo  extends AbstractVideo implements TypeHomeVideoInterface{
     
     const URI = 'videos2/getTypeHome';
     
-    public function execute($idtag, $format) {
+    public function execute($idtag) {
        
         $response = $this->getGuzzleSvc()->get(
             self::URI, 
             "", 
             $this->getSerializerSvc()->serializeTypeHome($idtag)
         );
-        return $this->getMapperSvc()->getTypeVideos($response, $format);
+        return $this->getMapperSvc()->getTypeVideos($response);
     }
 
 }

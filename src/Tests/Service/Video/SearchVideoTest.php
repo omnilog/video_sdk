@@ -67,6 +67,6 @@ class SearchVideoTest extends \PHPUnit_Framework_TestCase {
         $svc->setGuzzleSvc($mockGuzzle);
         $svc->setSerializerSvc($mockSerializerSvc);
         $svc->setMapperSvc($mockMapperSvc);
-        $this->assertEquals('OK getVideos', $svc->execute('ribery',2, 'xml'));
+        $this->assertEquals('OK getVideos', $svc->execute('ribery',2));
     }
 }

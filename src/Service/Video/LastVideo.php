@@ -9,14 +9,14 @@ namespace Lequipe\Service\Video;
 class LastVideo  extends AbstractVideo implements LastVideoInterface {
     const URI = 'videos2/getLastVideos';
     
-    public function execute($nb = 10, $idTag = "", $tri = "", $format) {
+    public function execute($nb = 10, $idTag = "", $tri = "") {
        
         $response = $this->getGuzzleSvc()->get(
             self::URI, 
             "", 
             $this->getSerializerSvc()->serializeLast($nb,$idTag, $tri)
         );
-        return $this->getMapperSvc()->getVideos($response, $format);
+        return $this->getMapperSvc()->getVideos($response);
     }
      
 }

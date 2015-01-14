@@ -8,4 +8,6 @@ namespace Lequipe\Service;
  */
 interface DataFormatterServiceInterface {
     public function getFormat();
+    
+    public function setFormatParams();
 }

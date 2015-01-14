@@ -50,7 +50,7 @@ class SearchVideoTest extends \PHPUnit_Framework_TestCase {
             ->method('get')
             ->willReturn($response);
         
-        $mockSerializerSvc = $this->getMock('\Lequipe\Service\Video\SerializerVideo', array('serializeSearche'));
+        $mockSerializerSvc = $this->getMock('\Lequipe\Service\Video\SerializerVideo', array('serializeSearch'));
         $mockSerializerSvc
             ->expects($this->once())
             ->method('serializeSearch')

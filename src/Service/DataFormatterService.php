@@ -21,4 +21,8 @@ class DataFormatterService implements DataFormatterServiceInterface {
     public function getFormat() {
         return $this->format;
     }
+    
+    public function setFormatParams() {
+        return array('outputType' => $this->format);
+    }
 }

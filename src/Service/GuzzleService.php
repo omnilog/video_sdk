@@ -59,9 +59,10 @@ class GuzzleService implements GuzzleServiceInterface
      * @return ResponseInterface
      * @throws RequestException When an error is encountered
      */
-    public function get($uri, $headers = array(), $params = array(), $format = "")
+    public function get($uri, $headers = array(), $params = array())
     {
-    
+        $format = $this->getDataFormatterSvc()->getFormat();
+        
         $request = $this->client->get(
             $this->getUrl(),
             $headers,
@@ -71,8 +72,8 @@ class GuzzleService implements GuzzleServiceInterface
         $params = array_merge(
             $params,
             $this->getUriParamSvc()->extractParamFromUri($uri),
-            $this->getAuthSvc()->getAuthParams()
-                
+            $this->getAuthSvc()->getAuthParams(),
+            $this->getDataFormatterSvc()->setFormatParams()
         );
         
         foreach ($params as $key => $value) {
@@ -88,7 +89,7 @@ class GuzzleService implements GuzzleServiceInterface
         
         $result = $request->send();
         
-        if ($this->getDataFormatterSvc()->getFormat($format) == 'json') {
+        if ($format == 'json') {
             return $result->json();
         } else {
             return $result->xml();

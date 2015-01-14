@@ -12,5 +12,5 @@ interface GuzzleServiceInterface
      * @return ResponseInterface
      * @throws RequestException When an error is encountered
      */
-    public function get($uri, $headers = array(), $params = array());
+    public function get($uri, $headers = array(), $params = array(), $format = "");
 }

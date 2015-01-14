@@ -5,7 +5,7 @@ namespace Lequipe;
 use Lequipe\Service\AuthService;
 use Lequipe\Service\GuzzleService;
 use Lequipe\Service\UriParamService;
-use Lequipe\Service\DataFormatter;
+use Lequipe\Service\DataFormatterService;
 use Lequipe\Service\Video\UneVideo;
 use Lequipe\Service\Video\LastVideo;
 use Lequipe\Service\Video\TypeHomeVideo;
@@ -81,7 +81,7 @@ class LequipeFactory {
         // GuzzleService
         $container['service.guzzle'] = function ($c) {
             $svc = new GuzzleService($c['url']);
-            $svc->setDataFormatter($c['service.data_formatter']);
+            $svc->setDataFormatterSvc($c['service.data_formatter']);
             $svc->setAuthSvc($c['service.auth']);
             $svc->setUriParamSvc($c['service.uri_param']);
 

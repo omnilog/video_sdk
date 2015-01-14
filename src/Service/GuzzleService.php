@@ -59,7 +59,7 @@ class GuzzleService implements GuzzleServiceInterface
      * @return ResponseInterface
      * @throws RequestException When an error is encountered
      */
-    public function get($uri, $headers = array(), $params = array())
+    public function get($uri, $headers = array(), $params = array(), $format = "")
     {
     
         $request = $this->client->get(
@@ -173,14 +173,14 @@ class GuzzleService implements GuzzleServiceInterface
     }
     
     /**
-     * @return DataFormatterInterface
+     * @return DataFormatterServiceInterface
      */
     function getDataFormatterSvc() {
         return $this->dataFormatterSvc;
     }
 
     /**
-     * @param DataFormatterInterface $dataFormatterSvc
+     * @param DataFormatterServiceInterface $dataFormatterSvc
      */
     function setDataFormatterSvc($dataFormatterSvc) {
         $this->dataFormatterSvc = $dataFormatterSvc;

@@ -35,8 +35,19 @@ class VideoServiceTest extends \PHPUnit_Framework_TestCase {
         
         $svc = new \Lequipe\Service\VideoService();
         $svc->setTypeHomeSvc($mock);
-        $this->assertEquals('typeHomeSvc', $svc->getTypeHomeVideo(48));
+        $this->assertEquals('typeHomeSvc', $svc->getTypeHomeVideo(48));   
+    }
+    
+    public function testGetSearchVideo() {
+        $mock = $this->getMock('\Lequipe\Service\Video\SearchVideo', array('execute'));
+        $mock
+            ->expects($this->once())
+            ->method('execute')
+            ->willReturn('searchSvc');
         
+        $svc = new \Lequipe\Service\VideoService();
+        $svc->setSearchSvc($mock);
+        $this->assertEquals('searchSvc', $svc->getSearchVideo("ribery"));
         
     }
 }

@@ -14,7 +14,6 @@ class SerializerVideoTest extends \PHPUnit_Framework_TestCase {
 
         $class = new \Lequipe\Service\Video\SerializerVideo();
         $this->assertEquals($arrayExpected, $class->serializeLast($nbTest, $idTagTest, $tri));
-         
      }
      
      public function testSerializeTypeHome() {
@@ -23,5 +22,14 @@ class SerializerVideoTest extends \PHPUnit_Framework_TestCase {
 
         $class = new \Lequipe\Service\Video\SerializerVideo();
         $this->assertEquals($arrayExpected, $class->serializeTypeHome($idTagTest));
+     }
+     
+     public function testSerializeSearch() {
+        $termTest = 'ribery';
+        $nbTest = 5;
+        $arrayExpected = array('recherche' => $termTest, "nb" => $nbTest);
+
+        $class = new \Lequipe\Service\Video\SerializerVideo();
+        $this->assertEquals($arrayExpected, $class->serializeSearch($termTest, $nbTest));
      }
 }

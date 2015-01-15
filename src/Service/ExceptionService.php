@@ -2,6 +2,7 @@
 
 namespace Lequipe\Service;
 
+use Lequipe\Service\Exception\ApiException;
 /**
  * Description of ExceptionService
  *
@@ -10,6 +11,19 @@ namespace Lequipe\Service;
 class ExceptionService implements ExceptionServiceInterface{
     
     public function getApiException(\Exception $e) {
-       //TODO
+        $code = $e->getCode();
+        $message = $e->getMessage();
+
+        $response = method_exists($e, 'getResponse') ? $e->getResponse() : null;
+        if (!empty($response)) {
+            $body = $response->getBody();
+            if (!empty($body)) {
+                $body = json_decode($body);
+                $code = isset($body->error->code) ? $body->error->code : $e->getCode();
+                $message = isset($body->error->message) ? $body->error->message : $e->getMessage();
+            }
+        }
+
+        return new ApiException($message, $code);
     }
 }

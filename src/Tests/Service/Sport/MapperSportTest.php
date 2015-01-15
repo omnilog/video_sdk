@@ -26,14 +26,16 @@ class MapperSportTest extends \PHPUnit_Framework_TestCase{
 
         $svc = new \Lequipe\Service\Sport\MapperSport();
         $actual = $svc->getSports( 
-            array(
-                array(
-                    'IDSPORT' => '22' ,
-                    'NOM' => 'Aviron'
-                ),
-                array(
-                    'IDSPORT' => '104',
-                    'NOM' => 'BMX'
+            array( "methodName" =>
+                array( "realResults" =>
+                    array(
+                        'IDSPORT' => '22' ,
+                        'NOM' => 'Aviron'
+                    ),
+                    array(
+                        'IDSPORT' => '104',
+                        'NOM' => 'BMX'
+                    )
                 )
             )
         );

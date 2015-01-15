@@ -45,34 +45,36 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase {
 
         $svc = new \Lequipe\Service\Video\MapperVideo();
         $actual = $svc->getVideos(
-            array(
-                array(
-                    'ID' => '42',
-                    'TITRE_LONG' => 'la vraie reponse', 
-                    'TITRE' =>  'la reponse',
-                    'SURTITRE1' => 'Ou pas',
-                    'SURTITRE2' =>  'peut être',
-                    'DESCRIPTIF' =>  'la reponse a la question',
-                    'DUREE' => '122' ,
-                    'DATE' => 'Jan 11 2014 07:59:01:607PM',
-                    'IDSPORT' => '101',
-                    'KEYWORD' =>  '42 ; la reponse',
-                    'NB_VUES' =>  '420',
-                    'TAGS' => 'Tag1'
-                ),
-                array(
-                    'ID' => '38',
-                    'TITRE_LONG' => 'mon titre long', 
-                    'TITRE' =>  'mon titre',
-                    'SURTITRE1' => 'mon surtitre 1',
-                    'SURTITRE2' =>  'mon surtitre 2',
-                    'DESCRIPTIF' =>  'mon descriptif',
-                    'DUREE' => '90' ,
-                    'DATE' => 'Jan 11 2014 07:59:01:607PM',
-                    'IDSPORT' => '48',
-                    'KEYWORD' =>  'keyword1 ; keyword2',
-                    'NB_VUES' =>  '10520',
-                    'TAGS' => 'Tag2'
+            array( "methodName" =>
+                array( "realResults" =>
+                    array(
+                        'ID' => '42',
+                        'TITRE_LONG' => 'la vraie reponse', 
+                        'TITRE' =>  'la reponse',
+                        'SURTITRE1' => 'Ou pas',
+                        'SURTITRE2' =>  'peut être',
+                        'DESCRIPTIF' =>  'la reponse a la question',
+                        'DUREE' => '122' ,
+                        'DATE' => 'Jan 11 2014 07:59:01:607PM',
+                        'IDSPORT' => '101',
+                        'KEYWORD' =>  '42 ; la reponse',
+                        'NB_VUES' =>  '420',
+                        'TAGS' => 'Tag1'
+                    ),
+                    array(
+                        'ID' => '38',
+                        'TITRE_LONG' => 'mon titre long', 
+                        'TITRE' =>  'mon titre',
+                        'SURTITRE1' => 'mon surtitre 1',
+                        'SURTITRE2' =>  'mon surtitre 2',
+                        'DESCRIPTIF' =>  'mon descriptif',
+                        'DUREE' => '90' ,
+                        'DATE' => 'Jan 11 2014 07:59:01:607PM',
+                        'IDSPORT' => '48',
+                        'KEYWORD' =>  'keyword1 ; keyword2',
+                        'NB_VUES' =>  '10520',
+                        'TAGS' => 'Tag2'
+                    )
                 )
             )
         );
@@ -110,5 +112,39 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals(2, count($result));
         $this->assertEquals($result, $actual);
 
+    }
+    
+    public function testGetTypeVideos() {
+        $svc = new \Lequipe\Service\Video\MapperVideo();
+        $actual = $svc->getTypeVideos(
+            array( "methodename" =>
+                array( "monarray" =>
+                    array(
+                        'ID' => '38',
+                        'TYPE' => 'HOME', 
+                    )
+                )
+            )
+        );
+        
+        $typeVid = new \Lequipe\Entity\TypeVideo();
+        $typeVid->setId('38');
+        $typeVid->setType('HOME');
+        
+        $this->assertEquals($typeVid, $actual);
+    }
+    
+    public function testPopulateTypeVideo() {
+        $typeVid = new \Lequipe\Entity\TypeVideo();
+        $svc = new \Lequipe\Service\Video\MapperVideo();
+        $svc->populateTypeVideo($typeVid, array(
+                'ID' => '676',
+                'TYPE' => 'LST',
+            )
+        );
+        
+        $this->assertEquals('676', $typeVid->getId());
+        $this->assertEquals('LST', $typeVid->getType());
+        
     }
 }

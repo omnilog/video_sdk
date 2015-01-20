@@ -24,7 +24,10 @@ class MapperVideo implements MapperVideoInterface{
             $vid->setIdSport($datas->IDSPORT);
             $vid->setKeyword($datas->KEYWORD);
             $vid->setNbVues($datas->NB_VUES);
+            $vid->setHorsMobile($datas->HORS_MOBILE);
+            $vid->setImage($datas->IMAGE);  
             $vid->setTags($datas->TAGS);
+            
         } else {
             $vid->setId($datas['ID']);
             $vid->setLongTitle($datas['TITRE_LONG']);
@@ -37,7 +40,9 @@ class MapperVideo implements MapperVideoInterface{
             $vid->setIdSport($datas['IDSPORT']);
             $vid->setKeyword($datas['KEYWORD']);
             $vid->setNbVues($datas['NB_VUES']);
+            $vid->setHorsMobile($datas['IMAGE']);
             $vid->setTags($datas['TAGS']);
+            $vid->setImage($datas['HORS_MOBILE']);
         }
     }
     

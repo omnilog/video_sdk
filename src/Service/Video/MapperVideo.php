@@ -19,8 +19,8 @@ class MapperVideo implements MapperVideoInterface{
             $vid->setSurtitle1($datas->SURTITRE1);
             $vid->setSurtitle2($datas->SURTITRE2);
             $vid->setDescriptif($datas->DESCRIPTIF);
-            $vid->setDuree($datas->DUREE);
-            $vid->setDate($datas->DATE);
+            $vid->setDuree(sprintf('%02d', $datas->DUREE / 60).':'.sprintf('%02d', $datas->DUREE % 60));
+            $vid->setDate(strtoupper(date('d M. Y | H:i', strtotime($datas->DATE))));
             $vid->setIdSport($datas->IDSPORT);
             $vid->setKeyword($datas->KEYWORD);
             $vid->setNbVues($datas->NB_VUES);
@@ -35,8 +35,8 @@ class MapperVideo implements MapperVideoInterface{
             $vid->setSurtitle1($datas['SURTITRE1']);
             $vid->setSurtitle2($datas['SURTITRE2']);
             $vid->setDescriptif($datas['DESCRIPTIF']);
-            $vid->setDuree($datas['DUREE']);
-            $vid->setDate($datas['DATE']);
+            $vid->setDuree(sprintf('%02d', $datas['DUREE'] / 60).':'.sprintf('%02d', $datas['DUREE'] % 60));
+            $vid->setDate(strtoupper(date('d M. Y | H:i', strtotime($datas['DATE']))));
             $vid->setIdSport($datas['IDSPORT']);
             $vid->setKeyword($datas['KEYWORD']);
             $vid->setNbVues($datas['NB_VUES']);

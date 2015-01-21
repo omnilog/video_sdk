@@ -22,6 +22,8 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase {
                 'IDSPORT' => '101',
                 'KEYWORD' =>  '42 ; la reponse',
                 'NB_VUES' =>  '420',
+                'HORS_MOBILES' => '0',
+                'IMAGE' => 'http://placehold.it/650X250',
                 'TAGS' => 'Tag1'
             )
         );
@@ -32,11 +34,13 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals('Ou pas', $vid->getSurtitle1());
         $this->assertEquals('peut être', $vid->getSurtitle2());
         $this->assertEquals('la reponse a la question', $vid->getDescriptif());
-        $this->assertEquals('122', $vid->getDuree());
-        $this->assertEquals('Jan 11 2014 07:59:01:607PM', $vid->getDate());
+        $this->assertEquals('02:02', $vid->getDuree());
+        $this->assertEquals('11 JAN. 2014 | 19:59', $vid->getDate());
         $this->assertEquals('101', $vid->getIdSport());
         $this->assertEquals('42 ; la reponse', $vid->getKeyword());
         $this->assertEquals('420', $vid->getNbVues());
+        $this->assertEquals('0', $vid->getHorsMobile());
+        $this->assertEquals('http://placehold.it/650X250', $vid->getImage());
         $this->assertEquals('Tag1', $vid->getTags());
         
     }
@@ -59,6 +63,8 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase {
                         'IDSPORT' => '101',
                         'KEYWORD' =>  '42 ; la reponse',
                         'NB_VUES' =>  '420',
+                        'HORS_MOBILES' => '0',
+                        'IMAGE' => 'http://placehold.it/650X250',
                         'TAGS' => 'Tag1'
                     ),
                     array(
@@ -73,6 +79,8 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase {
                         'IDSPORT' => '48',
                         'KEYWORD' =>  'keyword1 ; keyword2',
                         'NB_VUES' =>  '10520',
+                        'HORS_MOBILES' => '1',
+                        'IMAGE' => 'http://placehold.it/650X250',
                         'TAGS' => 'Tag2'
                     )
                 )
@@ -86,11 +94,13 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase {
         $vid1->setSurtitle1('Ou pas');
         $vid1->setSurtitle2('peut être');
         $vid1->setDescriptif('la reponse a la question');
-        $vid1->setDuree('122');
-        $vid1->setDate('Jan 11 2014 07:59:01:607PM');
+        $vid1->setDuree('02:02');
+        $vid1->setDate('11 JAN. 2014 | 19:59');
         $vid1->setIdSport('101');
         $vid1->setKeyword('42 ; la reponse');
         $vid1->setNbVues('420');
+        $vid1->setHorsMobile('0');
+        $vid1->setImage('http://placehold.it/650X250');
         $vid1->setTags('Tag1');
         
         $vid2 = new \Lequipe\Entity\Video();
@@ -100,17 +110,19 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase {
         $vid2->setSurtitle1('mon surtitre 1');
         $vid2->setSurtitle2('mon surtitre 2');
         $vid2->setDescriptif('mon descriptif');
-        $vid2->setDuree('90');
-        $vid2->setDate('Jan 11 2014 07:59:01:607PM');
+        $vid2->setDuree('01:30');
+        $vid2->setDate('11 JAN. 2014 | 19:59');
         $vid2->setIdSport('48');
         $vid2->setKeyword('keyword1 ; keyword2');
         $vid2->setNbVues('10520');
+        $vid2->setHorsMobile('1');
+        $vid2->setImage('http://placehold.it/650X250');
         $vid2->setTags('Tag2');
         
         $result = array($vid1, $vid2);
         
         $this->assertEquals(2, count($result));
-        $this->assertEquals($result, $actual);
+        $this->assertEquals($actual, $result);
 
     }
     

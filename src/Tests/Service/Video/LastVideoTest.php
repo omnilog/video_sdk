@@ -67,6 +67,6 @@ class LastVideoTest extends \PHPUnit_Framework_TestCase {
         $svc->setGuzzleSvc($mockGuzzle);
         $svc->setSerializerSvc($mockSerializerSvc);
         $svc->setMapperSvc($mockMapperSvc);
-        $this->assertEquals('OK getVideos', $svc->execute('2','',''));
+        $this->assertEquals('OK getVideos', $svc->execute('2','','','',''));
    }
 }

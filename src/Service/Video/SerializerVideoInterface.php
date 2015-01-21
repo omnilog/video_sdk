@@ -8,7 +8,7 @@ namespace Lequipe\Service\Video;
  */
 interface SerializerVideoInterface {
     
-    public function serializeLast($nb, $idtag, $tri);
+    public function serializeLast($nb, $idtag, $tri, $page, $jours);
     
     public function serializeTypeHome($idtag);
     

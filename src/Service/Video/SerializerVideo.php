@@ -8,12 +8,14 @@ namespace Lequipe\Service\Video;
  */
 class SerializerVideo implements SerializerVideoInterface{
     
-    public function serializeLast($nb, $idtag, $tri)
+    public function serializeLast($nb, $idtag, $tri, $page, $jours)
     {
         return array(
             "nb" => $nb,
             "idtag" => $idtag,
-            "tri" => $tri
+            "tri" => $tri,
+            "page" => $page,
+            "jours" => $jours
         );
     }
     

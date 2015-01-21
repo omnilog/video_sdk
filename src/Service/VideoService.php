@@ -37,8 +37,8 @@ class VideoService implements VideoServiceInterface{
      */
     private $searchSvc;
 
-    public function getLastVideo($nb = 10, $idtag = "", $tri = "") {
-        return $this->getLastSvc()->execute($nb, $idtag, $tri);
+    public function getLastVideo($nb = 10, $idtag = "", $tri = "", $page = "", $jours = "") {
+        return $this->getLastSvc()->execute($nb, $idtag, $tri, $page, $jours);
     }
     
     public function getUneVideo() {

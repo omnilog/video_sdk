@@ -8,6 +8,6 @@ namespace Lequipe\Service\Video;
  */
 interface LastVideoInterface {
     
-    public function execute($nb = 10, $idTag = "", $tri = "");
+    public function execute($nb = 10, $idTag = "", $tri = "", $page = "", $jours = "");
 
 }

@@ -10,10 +10,12 @@ class SerializerVideoTest extends \PHPUnit_Framework_TestCase {
         $nbTest = '12';
         $idTagTest = '42';
         $tri = 'TOP';
-        $arrayExpected = array('nb' => $nbTest,'idtag' => $idTagTest, 'tri' => $tri);
+        $page = "1";
+        $jours = "30";
+        $arrayExpected = array('nb' => $nbTest,'idtag' => $idTagTest, 'tri' => $tri, 'page' => $page, 'jours' => $jours);
 
         $class = new \Lequipe\Service\Video\SerializerVideo();
-        $this->assertEquals($arrayExpected, $class->serializeLast($nbTest, $idTagTest, $tri));
+        $this->assertEquals($arrayExpected, $class->serializeLast($nbTest, $idTagTest, $tri, $page, $jours));
      }
      
      public function testSerializeTypeHome() {

@@ -44,14 +44,6 @@ class LequipeFactory {
         $container = $this->getContainer();
         return $container['service.video'];
     }
-
-    /**
-     * @return SportServiceInterface
-     */
-/*    public function getSportService() {
-        $container = $this->getContainer();
-        return $container['service.sport'];
-    }*/
     
     private function getContainer()
     {
@@ -159,23 +151,6 @@ class LequipeFactory {
             return $svc;
         };
        
-        
-        
-        
-        /**
-         // MapperSport
-        $container['service.sport.mapper'] = function($c) {
-            return new MapperSport();
-        };
-        
-       
-        //SportService
-        $container['service.sport'] = function($c) {
-            $svc = new SportService();
-            $svc->setListSportSvc($c['service.sport.list']);
-            return $svc;
-        };
-*/
         return $container;
     }
     

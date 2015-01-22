@@ -9,14 +9,16 @@ class ListSportTest extends \PHPUnit_Framework_TestCase {
     public function testExecute() {
         
         $response = array(
-            array(
-                'IDSPORT' => '22',
-                'NOM' => 'Aviron'
-            ),
-            array(
-                'IDSPORT' => '104',
-                'NOM' => 'BMX'
-            )
+             array(
+                    'IDTAG' => '48' ,
+                    'LIBELLE' => 'Aviron',
+                    'IDSPORT' => '22' ,
+                ),
+                array(
+                    'IDTAG' => '49' ,
+                    'LIBELLE' => 'BMX',
+                    'IDSPORT' => '104'
+                )
         );
         
         $mockGuzzle = $this->getMock('\Lequipe\Service\GuzzleService', array('get'));

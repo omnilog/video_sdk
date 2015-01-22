@@ -12,14 +12,16 @@ class MapperSportTest extends \PHPUnit_Framework_TestCase{
         $sport = new \Lequipe\Entity\Sport();
         $svc = new \Lequipe\Service\Sport\MapperSport();
         $svc->populateSport($sport, array(
+            'IDTAG' => '48' ,
+            'LIBELLE' => 'Aviron',
             'IDSPORT' => '22' ,
-            'NOM' => 'Aviron'
             )
         );
         
+        $this->assertEquals('48', $sport->getIdTag());
+        $this->assertEquals('Aviron', $sport->getLibelle());
         $this->assertEquals('22', $sport->getIdSport());
-        $this->assertEquals('Aviron', $sport->getNom());
-        
+
     }
     
     public function testGetSports() {
@@ -29,25 +31,29 @@ class MapperSportTest extends \PHPUnit_Framework_TestCase{
             array( "methodName" =>
                 array( "realResults" =>
                     array(
+                        'IDTAG' => '48' ,
+                        'LIBELLE' => 'Aviron',
                         'IDSPORT' => '22' ,
-                        'NOM' => 'Aviron'
                     ),
                     array(
-                        'IDSPORT' => '104',
-                        'NOM' => 'BMX'
+                        'IDTAG' => '49' ,
+                        'LIBELLE' => 'BMX',
+                        'IDSPORT' => '104'
                     )
                 )
             )
         );
         
         $sport1 = new \Lequipe\Entity\Sport();
+        $sport1->setIdTag('48');
+        $sport1->setLibelle('Aviron');
         $sport1->setIdSport('22');
-        $sport1->setNom('Aviron');
         
         $sport2 = new \Lequipe\Entity\Sport();
+        $sport2->setIdTag('49');
+        $sport2->setLibelle('BMX');
         $sport2->setIdSport('104');
-        $sport2->setNom('BMX');
-        
+
         $result = array($sport1, $sport2);
         
         $this->assertEquals(2, count($result));

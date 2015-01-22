@@ -8,7 +8,7 @@ namespace Lequipe\Service\Sport;
  */
 class ListSport extends AbstractSport implements ListSportInterface {
     
-    const URI = 'videos/getListSports';
+    const URI = 'videos2/getListSports';
     
     public function execute() {
          $response = $this->getGuzzleSvc()->get(

@@ -48,10 +48,10 @@ class LequipeFactory {
     /**
      * @return SportServiceInterface
      */
-    public function getSportService() {
+/*    public function getSportService() {
         $container = $this->getContainer();
         return $container['service.sport'];
-    }
+    }*/
     
     private function getContainer()
     {
@@ -92,6 +92,11 @@ class LequipeFactory {
         // MapperVideo
         $container['service.video.mapper'] = function($c) {
             return new MapperVideo();
+        };
+        
+        //MapperSport
+        $container['service.sport.mapper'] = function($c) {
+            return new MapperSport();
         };
         
         //SerializerVideo
@@ -135,6 +140,14 @@ class LequipeFactory {
             return $svc;
         };
         
+        //ListSports
+        $container['service.video.listSport'] = function($c) {
+            $svc = new ListSport();
+            $svc->setGuzzleSvc($c['service.guzzle']);
+            $svc->setMapperSvc($c['service.sport.mapper']);
+            return $svc;
+        };
+        
         // VideoService
         $container['service.video'] = function ($c) {
             $svc = new VideoService();
@@ -142,29 +155,27 @@ class LequipeFactory {
             $svc->setLastSvc($c['service.video.last']);
             $svc->setTypeHomeSvc($c['service.video.typeHome']);
             $svc->setSearchSvc($c['service.video.search']);
+            $svc->setListSportSvc($c['service.video.listSport']);
             return $svc;
         };
+       
         
-        // MapperSport
+        
+        
+        /**
+         // MapperSport
         $container['service.sport.mapper'] = function($c) {
             return new MapperSport();
         };
         
-        //Sports
-        $container['service.sport.list'] = function($c) {
-            $svc = new ListSport();
-            $svc->setGuzzleSvc($c['service.guzzle']);
-            $svc->setMapperSvc($c['service.sport.mapper']);
-            return $svc;
-        };
-        
+       
         //SportService
         $container['service.sport'] = function($c) {
             $svc = new SportService();
             $svc->setListSportSvc($c['service.sport.list']);
             return $svc;
         };
-
+*/
         return $container;
     }
     

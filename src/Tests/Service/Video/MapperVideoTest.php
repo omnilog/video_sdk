@@ -12,6 +12,7 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase {
         $svc = new \Lequipe\Service\Video\MapperVideo();
         $svc->populateVideo($vid, array(
                 'ID' => '42',
+                'DMID' => 'x2emsac',
                 'TITRE_LONG' => 'la vraie reponse', 
                 'TITRE' =>  'la reponse',
                 'SURTITRE1' => 'Ou pas',
@@ -20,7 +21,7 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase {
                 'DUREE' => '122' ,
                 'DATE' => 'Jan 11 2014 07:59:01:607PM',
                 'IDSPORT' => '101',
-                'KEYWORD' =>  '42 ; la reponse',
+                'KEYWORDS' =>  '42 ; la reponse',
                 'NB_VUES' =>  '420',
                 'HORS_MOBILES' => '0',
                 'IMAGE' => 'http://placehold.it/650X250',
@@ -29,6 +30,7 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase {
         );
         
         $this->assertEquals('42', $vid->getId());
+        $this->assertEquals('x2emsac', $vid->getDmid());
         $this->assertEquals('la vraie reponse', $vid->getLongTitle());
         $this->assertEquals('la reponse', $vid->getTitle());
         $this->assertEquals('Ou pas', $vid->getSurtitle1());
@@ -37,7 +39,7 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals('02:02', $vid->getDuree());
         $this->assertEquals('11 JAN. 2014 | 19:59', $vid->getDate());
         $this->assertEquals('101', $vid->getIdSport());
-        $this->assertEquals('42 ; la reponse', $vid->getKeyword());
+        $this->assertEquals('42 ; la reponse', $vid->getKeywords());
         $this->assertEquals('420', $vid->getNbVues());
         $this->assertEquals('0', $vid->getHorsMobile());
         $this->assertEquals('http://placehold.it/650X250', $vid->getImage());
@@ -53,6 +55,7 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase {
                 array( "realResults" =>
                     array(
                         'ID' => '42',
+                        'DMID' => 'x2emsac',
                         'TITRE_LONG' => 'la vraie reponse', 
                         'TITRE' =>  'la reponse',
                         'SURTITRE1' => 'Ou pas',
@@ -61,7 +64,7 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase {
                         'DUREE' => '122' ,
                         'DATE' => 'Jan 11 2014 07:59:01:607PM',
                         'IDSPORT' => '101',
-                        'KEYWORD' =>  '42 ; la reponse',
+                        'KEYWORDS' =>  '42 ; la reponse',
                         'NB_VUES' =>  '420',
                         'HORS_MOBILES' => '0',
                         'IMAGE' => 'http://placehold.it/650X250',
@@ -69,6 +72,7 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase {
                     ),
                     array(
                         'ID' => '38',
+                        'DMID' => 'x2ejo21',
                         'TITRE_LONG' => 'mon titre long', 
                         'TITRE' =>  'mon titre',
                         'SURTITRE1' => 'mon surtitre 1',
@@ -77,7 +81,7 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase {
                         'DUREE' => '90' ,
                         'DATE' => 'Jan 11 2014 07:59:01:607PM',
                         'IDSPORT' => '48',
-                        'KEYWORD' =>  'keyword1 ; keyword2',
+                        'KEYWORDS' =>  'keyword1 ; keyword2',
                         'NB_VUES' =>  '10520',
                         'HORS_MOBILES' => '1',
                         'IMAGE' => 'http://placehold.it/650X250',
@@ -89,6 +93,7 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase {
         
         $vid1 = new \Lequipe\Entity\Video();
         $vid1->setId('42');
+        $vid1->setDmid('x2emsac');
         $vid1->setLongTitle('la vraie reponse');
         $vid1->setTitle('la reponse');
         $vid1->setSurtitle1('Ou pas');
@@ -97,7 +102,7 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase {
         $vid1->setDuree('02:02');
         $vid1->setDate('11 JAN. 2014 | 19:59');
         $vid1->setIdSport('101');
-        $vid1->setKeyword('42 ; la reponse');
+        $vid1->setKeywords('42 ; la reponse');
         $vid1->setNbVues('420');
         $vid1->setHorsMobile('0');
         $vid1->setImage('http://placehold.it/650X250');
@@ -105,6 +110,7 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase {
         
         $vid2 = new \Lequipe\Entity\Video();
         $vid2->setId('38');
+        $vid2->setDmid('x2ejo21');
         $vid2->setLongTitle('mon titre long');
         $vid2->setTitle('mon titre');
         $vid2->setSurtitle1('mon surtitre 1');
@@ -113,7 +119,7 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase {
         $vid2->setDuree('01:30');
         $vid2->setDate('11 JAN. 2014 | 19:59');
         $vid2->setIdSport('48');
-        $vid2->setKeyword('keyword1 ; keyword2');
+        $vid2->setKeywords('keyword1 ; keyword2');
         $vid2->setNbVues('10520');
         $vid2->setHorsMobile('1');
         $vid2->setImage('http://placehold.it/650X250');

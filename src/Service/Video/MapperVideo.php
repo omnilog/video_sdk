@@ -14,6 +14,7 @@ class MapperVideo implements MapperVideoInterface{
     public function populateVideo(Video $vid, $datas) {
         if(is_object($datas)) {
             $vid->setId($datas->ID);
+            $vid->setDmid($datas->DMID);
             $vid->setLongTitle($datas->TITRE_LONG);
             $vid->setTitle($datas->TITRE);
             $vid->setSurtitle1($datas->SURTITRE1);
@@ -22,7 +23,7 @@ class MapperVideo implements MapperVideoInterface{
             $vid->setDuree(sprintf('%02d', $datas->DUREE / 60).':'.sprintf('%02d', $datas->DUREE % 60));
             $vid->setDate(strtoupper(date('d M. Y | H:i', strtotime($datas->DATE))));
             $vid->setIdSport($datas->IDSPORT);
-            $vid->setKeyword($datas->KEYWORDS);
+            $vid->setKeywords($datas->KEYWORDS);
             $vid->setNbVues($datas->NB_VUES);
             $vid->setHorsMobile($datas->HORS_MOBILES);
             $vid->setImage($datas->IMAGE);  
@@ -30,6 +31,7 @@ class MapperVideo implements MapperVideoInterface{
             
         } else {
             $vid->setId($datas['ID']);
+            $vid->setDmid($datas['DMID']);
             $vid->setLongTitle($datas['TITRE_LONG']);
             $vid->setTitle($datas['TITRE']);
             $vid->setSurtitle1($datas['SURTITRE1']);
@@ -38,7 +40,7 @@ class MapperVideo implements MapperVideoInterface{
             $vid->setDuree(sprintf('%02d', $datas['DUREE'] / 60).':'.sprintf('%02d', $datas['DUREE'] % 60));
             $vid->setDate(strtoupper(date('d M. Y | H:i', strtotime($datas['DATE']))));
             $vid->setIdSport($datas['IDSPORT']);
-            $vid->setKeyword($datas['KEYWORDS']);
+            $vid->setKeywords($datas['KEYWORDS']);
             $vid->setNbVues($datas['NB_VUES']);
             $vid->setHorsMobile($datas['HORS_MOBILES']);
             $vid->setTags($datas['TAGS']);

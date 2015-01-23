@@ -9,6 +9,7 @@ namespace Lequipe\Entity;
 class Video {
     
     private $id;
+    private $dmid;
     private $longTitle;
     private $title;
     private $surtitle1;
@@ -17,7 +18,7 @@ class Video {
     private $duree;
     private $date;
     private $idSport;
-    private $keyword = null;
+    private $keywords = null;
     private $nbVues;
     private $horsMobile = false;
     private $image;
@@ -25,7 +26,7 @@ class Video {
     
     /**
      * Set the id of the video
-     * @param intger $id
+     * @param integer $id
      */
     public function setId($id) {
         $this->id = $id;
@@ -40,6 +41,23 @@ class Video {
         return $this->id;
     }
     
+    /**
+     * set the dailymotion_id of the video
+     * @param integer $dmid
+     */
+    function setDmid($dmid) {
+        $this->dmid = $dmid;
+    }
+    
+    /**
+     * return the dailymotion_id of the video
+     * @return integer
+     */
+    function getDmid() {
+        return $this->dmid;
+    }
+
+        
     /**
      * set the longTitle of the video
      * @param string $longTitle
@@ -177,19 +195,19 @@ class Video {
     }
     
     /**
-     * return the keyword of the video
+     * return the keywords of the video
      * @return string
      */
-    public function getKeyword() {
-        return $this->keyword;
+    public function getKeywords() {
+        return $this->keywords;
     }
     
     /**
      * set the keyword of the video
      * @param string $keyword
      */
-    public function setKeyword($keyword) {
-        $this->keyword = $keyword;
+    public function setKeywords($keywords) {
+        $this->keywords = $keywords;
         return $this;
     }
     

@@ -22,7 +22,7 @@ class MapperVideo implements MapperVideoInterface{
             $vid->setDuree(sprintf('%02d', $datas->DUREE / 60).':'.sprintf('%02d', $datas->DUREE % 60));
             $vid->setDate(strtoupper(date('d M. Y | H:i', strtotime($datas->DATE))));
             $vid->setIdSport($datas->IDSPORT);
-            $vid->setKeyword($datas->KEYWORD);
+            $vid->setKeyword($datas->KEYWORDS);
             $vid->setNbVues($datas->NB_VUES);
             $vid->setHorsMobile($datas->HORS_MOBILES);
             $vid->setImage($datas->IMAGE);  
@@ -38,7 +38,7 @@ class MapperVideo implements MapperVideoInterface{
             $vid->setDuree(sprintf('%02d', $datas['DUREE'] / 60).':'.sprintf('%02d', $datas['DUREE'] % 60));
             $vid->setDate(strtoupper(date('d M. Y | H:i', strtotime($datas['DATE']))));
             $vid->setIdSport($datas['IDSPORT']);
-            $vid->setKeyword($datas['KEYWORD']);
+            $vid->setKeyword($datas['KEYWORDS']);
             $vid->setNbVues($datas['NB_VUES']);
             $vid->setHorsMobile($datas['HORS_MOBILES']);
             $vid->setTags($datas['TAGS']);

@@ -53,10 +53,12 @@ class MapperVideo implements MapperVideoInterface{
         
         if(is_object($datas)) {
             foreach ($datas->children()->children() as $d) {
-                $tmp = new Video();
-                $this->populateVideo($tmp, $d);
-                $videos[] = $tmp;
-                unset($tmp);
+                if(isset($d->ID) && !empty($d->ID)) {
+                    $tmp = new Video();
+                    $this->populateVideo($tmp, $d);
+                    $videos[] = $tmp;
+                    unset($tmp);
+                }
             }
         } else {
             $iterator = new \RecursiveArrayIterator($datas);

@@ -26,7 +26,7 @@ class MapperSport implements MapperSportInterface {
         
         if(is_object($datas)) {
             foreach ($datas->children()->children() as $d) {
-                if(isset($d->ID) && !empty($d->IDTAG)) {
+                if(isset($d->IDTAG) && !empty($d->IDTAG)) {
                     $tmp = new Sport();
                     $this->populateSport($tmp, $d);
                     $sports[] = $tmp;

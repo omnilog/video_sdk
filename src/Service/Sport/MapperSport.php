@@ -26,17 +26,19 @@ class MapperSport implements MapperSportInterface {
         
         if(is_object($datas)) {
             foreach ($datas->children()->children() as $d) {
+                if(isset($d->ID) && !empty($d->IDTAG)) {
                     $tmp = new Sport();
                     $this->populateSport($tmp, $d);
                     $sports[] = $tmp;
                     unset($tmp);
+                }
             }
         } else {
             $iterator = new \RecursiveArrayIterator($datas);
             while ($iterator->valid()) {
                 if ($iterator->hasChildren()) {
                     foreach ($iterator->getChildren() as $key => $value) {
-                        if(is_array($value) && !empty($value)) {
+                        if(is_array($value) && !empty($value['IDTAG'])) {
                             $tmp = new Sport();
                             $this->populateSport($tmp, $value);
                             $sports[] = $tmp;

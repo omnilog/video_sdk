@@ -65,7 +65,7 @@ class MapperVideo implements MapperVideoInterface{
             while ($iterator->valid()) {
                 if ($iterator->hasChildren()) {
                     foreach ($iterator->getChildren() as $key => $value) {
-                        if(is_array($value) && !empty($value)) {
+                        if(is_array($value) && !empty($value['ID'])) {
                             $tmp = new Video();
                             $this->populateVideo($tmp, $value);
                             $videos[] = $tmp;

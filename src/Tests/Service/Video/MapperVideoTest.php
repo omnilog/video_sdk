@@ -24,6 +24,10 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase {
                 'KEYWORDS' =>  '42 ; la reponse',
                 'NB_VUES' =>  '420',
                 'HORS_MOBILES' => '0',
+                'PRIVEE' => '0',
+                'CHAINE' => 'lequipe',
+                'KID' => 'k1W21JxRxTRE0e9WGHy',
+                'NB_COMMENTAIRES' => '350',
                 'IMAGE' => 'http://placehold.it/650X250',
                 'TAGS' => 'Tag1'
             )
@@ -42,6 +46,10 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals('42 ; la reponse', $vid->getKeywords());
         $this->assertEquals('420', $vid->getNbVues());
         $this->assertEquals('0', $vid->getHorsMobile());
+        $this->assertEquals('0', $vid->getPrivee());
+        $this->assertEquals('lequipe', $vid->getChaine());
+        $this->assertEquals('k1W21JxRxTRE0e9WGHy', $vid->getKid());
+        $this->assertEquals('350', $vid->getNbCommentaires());
         $this->assertEquals('http://placehold.it/650X250', $vid->getImage());
         $this->assertEquals('Tag1', $vid->getTags());
         
@@ -67,6 +75,10 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase {
                         'KEYWORDS' =>  '42 ; la reponse',
                         'NB_VUES' =>  '420',
                         'HORS_MOBILES' => '0',
+                        'PRIVEE' => '0',
+                        'CHAINE' => 'lequipe',
+                        'KID' => 'k1W21JxRxTRE0e9WGHy',
+                        'NB_COMMENTAIRES' => '350',
                         'IMAGE' => 'http://placehold.it/650X250',
                         'TAGS' => 'Tag1'
                     ),
@@ -84,6 +96,10 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase {
                         'KEYWORDS' =>  'keyword1 ; keyword2',
                         'NB_VUES' =>  '10520',
                         'HORS_MOBILES' => '1',
+                        'PRIVEE' => '1',
+                        'CHAINE' => 'lequipeLigue1',
+                        'KID' => 'k1W21JxRxTRE0e9WGHy',
+                        'NB_COMMENTAIRES' => '120',
                         'IMAGE' => 'http://placehold.it/650X250',
                         'TAGS' => 'Tag2'
                     )
@@ -105,6 +121,10 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase {
         $vid1->setKeywords('42 ; la reponse');
         $vid1->setNbVues('420');
         $vid1->setHorsMobile('0');
+        $vid1->setPrivee('0');
+        $vid1->setChaine('lequipe');
+        $vid1->setKid('k1W21JxRxTRE0e9WGHy');
+        $vid1->setNbCommentaires('350');
         $vid1->setImage('http://placehold.it/650X250');
         $vid1->setTags('Tag1');
         
@@ -122,6 +142,10 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase {
         $vid2->setKeywords('keyword1 ; keyword2');
         $vid2->setNbVues('10520');
         $vid2->setHorsMobile('1');
+        $vid2->setPrivee('1');
+        $vid2->setChaine('lequipeLigue1');
+        $vid2->setKid('k1W21JxRxTRE0e9WGHy');
+        $vid2->setNbCommentaires('120');
         $vid2->setImage('http://placehold.it/650X250');
         $vid2->setTags('Tag2');
         

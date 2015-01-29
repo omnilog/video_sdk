@@ -21,6 +21,10 @@ class Video {
     private $keywords = null;
     private $nbVues;
     private $horsMobile = false;
+    private $privee;
+    private $kid = null;
+    private $chaine;
+    private $nbCommentaires;
     private $image;
     private $tags = array();
     
@@ -244,6 +248,70 @@ class Video {
         $this->horsMobile = $horsMobile;
         return $this;
     }
+    /**
+     * return the privee status of the video
+     * @return boolean
+     */
+    function getPrivee() {
+        return $this->privee;
+    }
+
+    /**
+     * set the privee status of the video
+     * @param boolean $privee
+     */
+    function setPrivee($privee) {
+        $this->privee = $privee;
+    }
+    
+    /**
+     * return the kid of the video (for privates videos)
+     * @return string
+     */
+    function getKid() {
+        return $this->kid;
+    }
+
+    /**
+     * set the Kid of the video
+     * @param string $kid
+     */
+    function setKid($kid) {
+        $this->kid = $kid;
+    }
+
+    /**
+     * return the channel of the video
+     * @return string
+     */
+    function getChaine() {
+        return $this->chaine;
+    }
+
+    /**
+     * set the channel of the video
+     * @param string $chaine
+     */
+    function setChaine($chaine) {
+        $this->chaine = $chaine;
+    }
+
+    /**
+     * return the number of comments of the video
+     * @return integer
+     */
+    function getNbCommentaires() {
+        return $this->nbCommentaires;
+    }
+    
+    /**
+     * set the NbCommentaires of the video
+     * @param integer $nbCommentaires
+     */
+    function setNbCommentaires($nbCommentaires) {
+        $this->nbCommentaires = $nbCommentaires;
+    }
+
     
     /**
      * return the image preview uri of the video

@@ -26,6 +26,10 @@ class MapperVideo implements MapperVideoInterface{
             $vid->setKeywords($datas->KEYWORDS);
             $vid->setNbVues($datas->NB_VUES);
             $vid->setHorsMobile($datas->HORS_MOBILES);
+            $vid->setPrivee($datas->PRIVEE);
+            $vid->setKid($datas->KID);
+            $vid->setChaine($datas->CHAINE);
+            $vid->setNbCommentaires($datas->NB_COMMENTAIRES);
             $vid->setImage($datas->IMAGE);  
             $vid->setTags($datas->TAGS);
             
@@ -43,8 +47,12 @@ class MapperVideo implements MapperVideoInterface{
             $vid->setKeywords($datas['KEYWORDS']);
             $vid->setNbVues($datas['NB_VUES']);
             $vid->setHorsMobile($datas['HORS_MOBILES']);
-            $vid->setTags($datas['TAGS']);
+            $vid->setPrivee($datas['PRIVEE']);
+            $vid->setKid($datas['KID']);
+            $vid->setChaine($datas['CHAINE']);
+            $vid->setNbCommentaires($datas['NB_COMMENTAIRES']);
             $vid->setImage($datas['IMAGE']);
+            $vid->setTags($datas['TAGS']);
         }
     }
     

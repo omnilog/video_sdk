@@ -28,13 +28,18 @@ class LequipeFactory {
     private $login = null;
     private $password = null;
     private $format = null;
-
-    public function __construct($url, $login, $password, $format)
+    private $acllog = null;
+    private $aclpass = null;
+    
+    
+    public function __construct($url, $login, $password, $format, $acllog = "", $aclpass = "")
     {
         $this->url = $url;
         $this->login = $login;
         $this->password = $password;
         $this->format = $format;
+        $this->acllog = $acllog;
+        $this->aclpass = $aclpass;
     }
 
     /**
@@ -54,7 +59,9 @@ class LequipeFactory {
         $container['login'] = $this->login;
         $container['password'] = $this->password;
         $container['format'] = $this->format;
-
+        $container['acllog'] = $this->acllog;
+        $container['aclpass'] = $this->aclpass;
+        
         //DataFormatter
         $container['service.data_formatter'] = function ($c) {
             return new DataFormatterService($c['format']);
@@ -67,7 +74,7 @@ class LequipeFactory {
 
         // AuthService
         $container['service.auth'] = function ($c) {
-            $svc = new AuthService($c['login'], $c['password']);
+            $svc = new AuthService($c['login'], $c['password'], $c['acllog'], $c['aclpass']);
             return $svc;
         };
 

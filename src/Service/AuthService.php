@@ -20,11 +20,17 @@ class AuthService implements AuthServiceInterface
      * @var string
      */
     private $password = null;
+    
+    private $acllog = null;
+    
+    private $aclpass = null;
 
-    public function __construct($login, $password)
+    public function __construct($login, $password, $acllog = "", $aclpass = "")
     {
         $this->login = $login;
         $this->password = $password;
+        $this->acllog= $acllog;
+        $this->aclpass = $aclpass;
     }
 
     public function getAuthParams()
@@ -39,8 +45,8 @@ class AuthService implements AuthServiceInterface
     {
         return array(
             'auth' => array(
-                'eqn',
-                'EQN2014'
+                $this->AclLog,
+                $this->AclPass
             )
         );
     }

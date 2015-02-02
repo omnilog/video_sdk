@@ -10,6 +10,7 @@ use Lequipe\Service\Video\UneVideo;
 use Lequipe\Service\Video\LastVideo;
 use Lequipe\Service\Video\TypeHomeVideo;
 use Lequipe\Service\Video\SearchVideo;
+use Lequipe\Service\Video\InfoVideo;
 use Lequipe\Service\Video\MapperVideo;
 use Lequipe\Service\Video\SerializerVideo;
 use Lequipe\Service\VideoService;
@@ -139,6 +140,15 @@ class LequipeFactory {
             return $svc;
         };
         
+        //InfoVideo
+        $container['service.video.info'] = function($c) {
+            $svc = new InfoVideo();
+            $svc->setGuzzleSvc($c['service.guzzle']);
+            $svc->setMapperSvc($c['service.video.mapper']);
+            $svc->setSerializerSvc($c['service.video.serializer']);
+            return $svc;
+        };
+        
         //ListSports
         $container['service.video.listSport'] = function($c) {
             $svc = new ListSport();
@@ -154,6 +164,7 @@ class LequipeFactory {
             $svc->setLastSvc($c['service.video.last']);
             $svc->setTypeHomeSvc($c['service.video.typeHome']);
             $svc->setSearchSvc($c['service.video.search']);
+            $svc->setInfoSvc($c['service.video.info']);
             $svc->setListSportSvc($c['service.video.listSport']);
             return $svc;
         };

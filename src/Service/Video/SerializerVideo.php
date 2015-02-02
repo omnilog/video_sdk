@@ -32,4 +32,10 @@ class SerializerVideo implements SerializerVideoInterface{
             "page" => $page
         );
     }
+    
+    public function serializeInfo($id) {
+        return array(
+            "dmid" => $id
+        );
+    }
 }

@@ -5,6 +5,7 @@ use Lequipe\Service\Video\LastVideoInterface;
 use Lequipe\Service\Video\UneVideoInterface;
 use Lequipe\Service\Video\TypeHomeVideoInterface;
 use Lequipe\Service\Video\SearchVideoInterface;
+use Lequipe\Service\Video\InfoVideoInterface;
 use Lequipe\Service\Sport\ListSportInterface;
 /**
  * Description of Video
@@ -37,6 +38,12 @@ class VideoService implements VideoServiceInterface{
      */
     private $searchSvc;
     
+    /**
+     * 
+     * @var InfoVideoInterface
+     */
+    private $infoSvc;
+    
     
     /**
      * 
@@ -59,6 +66,10 @@ class VideoService implements VideoServiceInterface{
 
     public function getSearchVideo($term, $nb = 10, $page = "") {
         return $this->getSearchSvc()->execute($term, $nb, $page);
+    }
+    
+    public function getInfoVideo($id) {
+        return $this->getInfoVideo()->execute($id);
     }
     
     public function getListSport() {
@@ -124,6 +135,21 @@ class VideoService implements VideoServiceInterface{
     function setSearchSvc($searchVideoSvc) {
         $this->searchVideoSvc = $searchVideoSvc;
     }
+
+    /**
+     * @return \Lequipe\Service\Video\InfoVideoInterface
+     */
+    function getInfoSvc() {
+        return $this->infoSvc;
+    }
+    
+    /**
+     * @param \Lequipe\Service\Video\InfoVideoInterface $infoVideoSvc
+     */
+    function setInfoSvc($infoVideoSvc) {
+        $this->infoSvc = $infoVideoSvc;
+    }
+    
     
     /**
      * @return \Lequipe\Service\Sport\ListSportInterface

@@ -14,4 +14,6 @@ interface SerializerVideoInterface {
     
     public function serializeSearch($term, $nb, $page);
     
+    public function serializeInfo($id);
+    
 }

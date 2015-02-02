@@ -69,7 +69,7 @@ class VideoService implements VideoServiceInterface{
     }
     
     public function getInfoVideo($id) {
-        return $this->getInfoVideo()->execute($id);
+        return $this->getInfoSvc()->execute($id);
     }
     
     public function getListSport() {

@@ -9,6 +9,7 @@ namespace Lequipe\Entity;
 class Video {
     
     private $id;
+    private $dmid;
     private $longTitle;
     private $title;
     private $surtitle1;
@@ -17,15 +18,19 @@ class Video {
     private $duree;
     private $date;
     private $idSport;
-    private $keyword = null;
+    private $keywords = null;
     private $nbVues;
     private $horsMobile = false;
+    private $privee;
+    private $kid = null;
+    private $chaine;
+    private $nbCommentaires;
     private $image;
     private $tags = array();
     
     /**
      * Set the id of the video
-     * @param intger $id
+     * @param integer $id
      */
     public function setId($id) {
         $this->id = $id;
@@ -40,6 +45,23 @@ class Video {
         return $this->id;
     }
     
+    /**
+     * set the dailymotion_id of the video
+     * @param integer $dmid
+     */
+    function setDmid($dmid) {
+        $this->dmid = $dmid;
+    }
+    
+    /**
+     * return the dailymotion_id of the video
+     * @return integer
+     */
+    function getDmid() {
+        return $this->dmid;
+    }
+
+        
     /**
      * set the longTitle of the video
      * @param string $longTitle
@@ -64,6 +86,14 @@ class Video {
     public function setTitle($title) {
         $this->title = $title;
         return $this;
+    }
+    
+    /**
+     * return the title of the video
+     * @return string
+     */
+    public function getTitle() {
+        return $this->title;
     }
     
     /**
@@ -169,19 +199,19 @@ class Video {
     }
     
     /**
-     * return the keyword of the video
+     * return the keywords of the video
      * @return string
      */
-    public function getKeyword() {
-        return $this->keyword;
+    public function getKeywords() {
+        return $this->keywords;
     }
     
     /**
      * set the keyword of the video
      * @param string $keyword
      */
-    public function setKeyword($keyword) {
-        $this->keyword = $keyword;
+    public function setKeywords($keywords) {
+        $this->keywords = $keywords;
         return $this;
     }
     
@@ -218,6 +248,70 @@ class Video {
         $this->horsMobile = $horsMobile;
         return $this;
     }
+    /**
+     * return the privee status of the video
+     * @return boolean
+     */
+    function getPrivee() {
+        return $this->privee;
+    }
+
+    /**
+     * set the privee status of the video
+     * @param boolean $privee
+     */
+    function setPrivee($privee) {
+        $this->privee = $privee;
+    }
+    
+    /**
+     * return the kid of the video (for privates videos)
+     * @return string
+     */
+    function getKid() {
+        return $this->kid;
+    }
+
+    /**
+     * set the Kid of the video
+     * @param string $kid
+     */
+    function setKid($kid) {
+        $this->kid = $kid;
+    }
+
+    /**
+     * return the channel of the video
+     * @return string
+     */
+    function getChaine() {
+        return $this->chaine;
+    }
+
+    /**
+     * set the channel of the video
+     * @param string $chaine
+     */
+    function setChaine($chaine) {
+        $this->chaine = $chaine;
+    }
+
+    /**
+     * return the number of comments of the video
+     * @return integer
+     */
+    function getNbCommentaires() {
+        return $this->nbCommentaires;
+    }
+    
+    /**
+     * set the NbCommentaires of the video
+     * @param integer $nbCommentaires
+     */
+    function setNbCommentaires($nbCommentaires) {
+        $this->nbCommentaires = $nbCommentaires;
+    }
+
     
     /**
      * return the image preview uri of the video

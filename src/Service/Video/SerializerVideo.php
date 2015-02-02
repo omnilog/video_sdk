@@ -25,10 +25,11 @@ class SerializerVideo implements SerializerVideoInterface{
         );
     }
     
-    public function serializeSearch($term, $nb) {
+    public function serializeSearch($term, $nb, $page) {
         return array(
             "recherche" => $term,
-            "nb" => $nb
+            "nb" => $nb,
+            "page" => $page
         );
     }
 }

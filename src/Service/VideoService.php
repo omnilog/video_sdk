@@ -57,8 +57,8 @@ class VideoService implements VideoServiceInterface{
         return $this->getTypeHomeSvc()->execute($idtag);
     }
 
-    public function getSearchVideo($term, $nb = 10) {
-        return $this->getSearchSvc()->execute($term, $nb);
+    public function getSearchVideo($term, $nb = 10, $page = "") {
+        return $this->getSearchSvc()->execute($term, $nb, $page);
     }
     
     public function getListSport() {

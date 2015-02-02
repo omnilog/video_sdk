@@ -45,8 +45,8 @@ class AuthService implements AuthServiceInterface
     {
         return array(
             'auth' => array(
-                $this->AclLog,
-                $this->AclPass
+                $this->acllog,
+                $this->acllog
             )
         );
     }

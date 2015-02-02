@@ -8,8 +8,13 @@ use Lequipe\Exception\ApiException;
  *
  * @author cguinet
  */
-interface ExceptionServiceInterface {
+interface ExceptionServiceInterface 
+{
   
+    /**
+     * @param \Exception $e
+     * @return ApiException
+     */
     public function getApiException(\Exception $e);
     
 }

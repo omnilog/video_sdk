@@ -2,7 +2,7 @@
 
 namespace Lequipe\Service;
 
-use Lequipe\Service\Exception\ApiException;
+use Lequipe\Exception\ApiException;
 /**
  * Description of ExceptionService
  *
@@ -10,7 +10,12 @@ use Lequipe\Service\Exception\ApiException;
  */
 class ExceptionService implements ExceptionServiceInterface{
     
-    public function getApiException(\Exception $e) {
+    /**
+     * @param \Exception $e
+     * @return ApiException
+     */
+    public function getApiException(\Exception $e) 
+    {
         $code = $e->getCode();
         $message = $e->getMessage();
 

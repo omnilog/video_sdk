@@ -1,6 +1,7 @@
 <?php
 
-namespace \Lequipe\Exception;
+namespace Lequipe\Exception;
 
-classe ApiException extends \Exception {
+class ApiException extends \Exception 
+{
 }

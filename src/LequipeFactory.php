@@ -2,6 +2,7 @@
 
 namespace Lequipe;
 
+use Lequipe\Service\ExceptionService;
 use Lequipe\Service\AuthService;
 use Lequipe\Service\GuzzleService;
 use Lequipe\Service\UriParamService;
@@ -63,6 +64,11 @@ class LequipeFactory {
         $container['acllog'] = $this->acllog;
         $container['aclpass'] = $this->aclpass;
         
+        // ExceptionService
+        $container['service.exception'] = function ($c) {
+            return new ExceptionService();
+        };
+        
         //DataFormatter
         $container['service.data_formatter'] = function ($c) {
             return new DataFormatterService($c['format']);
@@ -82,6 +88,7 @@ class LequipeFactory {
         // GuzzleService
         $container['service.guzzle'] = function ($c) {
             $svc = new GuzzleService($c['url']);
+            $svc->setExceptionSvc($c['service.exception']);
             $svc->setDataFormatterSvc($c['service.data_formatter']);
             $svc->setAuthSvc($c['service.auth']);
             $svc->setUriParamSvc($c['service.uri_param']);

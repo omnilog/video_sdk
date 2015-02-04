@@ -31,14 +31,14 @@ class GuzzleService implements GuzzleServiceInterface
     private $authSvc;
     
     /**
-     * @var DataFormatterInterface
+     * @var DataFormatterServiceInterface
      */
     private $dataFormatterSvc;
 
     /**
      * @var ExceptionServiceInterface
      */
-    private $exceptionService = null;
+    private $exceptionSvc = null;
 
     public function __construct($url = null, ClientInterface $client = null)
     {
@@ -61,7 +61,8 @@ class GuzzleService implements GuzzleServiceInterface
      */
     public function get($uri, $headers = array(), $params = array())
     {
-        $format = $this->getDataFormatterSvc()->getFormat();
+                
+       $format = $this->getDataFormatterSvc()->getFormat();
         
         $request = $this->client->get(
             $this->getUrl(),
@@ -83,7 +84,8 @@ class GuzzleService implements GuzzleServiceInterface
         try {
             $result = $request->send();
         } catch (\Exception $e) {
-            $apiException = $this->getExceptionService()->getApiException($e);
+            $apiException = $this->getExceptionSvc()->getApiException($e);
+            
             throw $apiException;
         }
         
@@ -114,19 +116,19 @@ class GuzzleService implements GuzzleServiceInterface
     }
 
     /**
-     * @param \Lequipe\Service\ExceptionServiceInterface $exceptionService
+     * @param \Lequipe\Service\ExceptionServiceInterface $exceptionSvc
      */
-    public function setExceptionService($exceptionService)
+    public function setExceptionSvc($exceptionSvc)
     {
-        $this->exceptionService = $exceptionService;
+        $this->exceptionSvc = $exceptionSvc;
     }
 
     /**
      * @return \Lequipe\Service\ExceptionServiceInterface
      */
-    public function getExceptionService()
+    public function getExceptionSvc()
     {
-        return $this->exceptionService;
+        return $this->exceptionSvc;
     }
 
     /**

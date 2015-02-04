@@ -60,7 +60,7 @@ $videoSvc = new \Lequipe\LequipeFactory('url_ws', 'monlogin', 'monpassword', 'mo
 
 try {
     $videosLast = $videoSvc->getVideoService()->getLastVideo();
-} catch (\Ftven\SdkTaxonomy\Exception\ApiException $e) {
+} catch (\Lequipe\Exception\ApiException $e) {
     echo $e->getCode() . ' - ' .$e->getMessage();
 }
 ```

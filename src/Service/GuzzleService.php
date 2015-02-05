@@ -89,8 +89,6 @@ class GuzzleService implements GuzzleServiceInterface
             throw $apiException;
         }
         
-        $result = $request->send();
-        
         if ($format == 'json') {
             return $result->json();
         } else {

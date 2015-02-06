@@ -29,9 +29,17 @@ class SerializerVideoTest extends \PHPUnit_Framework_TestCase {
      public function testSerializeSearch() {
         $termTest = 'ribery';
         $nbTest = 5;
-        $arrayExpected = array('recherche' => $termTest, "nb" => $nbTest);
+        $page= 1;
+        $arrayExpected = array('recherche' => $termTest, "nb" => $nbTest, "page" => $page);
 
         $class = new \Lequipe\Service\Video\SerializerVideo();
-        $this->assertEquals($arrayExpected, $class->serializeSearch($termTest, $nbTest));
+        $this->assertEquals($arrayExpected, $class->serializeSearch($termTest, $nbTest, $page));
+     }
+     
+     public function testSerializeInfo() {
+        $id = '12';
+        $arrayExpected = array('dmid' => $id);
+        $class = new \Lequipe\Service\Video\SerializerVideo();
+        $this->assertEquals($arrayExpected, $class->serializeInfo($id));
      }
 }

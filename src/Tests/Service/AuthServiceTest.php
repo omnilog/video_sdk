@@ -28,8 +28,8 @@ class AuthServiceTest extends \PHPUnit_Framework_TestCase {
     public function testGetAuthOptions() {
         $expected = array(
             'auth' => array(
-                'eqn',
-                'EQN2014'
+                '',
+                ''
             )
         );
         $login = "toto";

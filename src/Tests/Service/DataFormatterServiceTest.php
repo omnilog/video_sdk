@@ -26,4 +26,10 @@ class DataFormatterServiceTest extends \PHPUnit_Framework_TestCase
         $formatter = new \Lequipe\Service\DataFormatterService($format);
         $this->assertEquals('toto', $formatter->getFormat());
     }
+    
+    public function testSetFormatParams() {
+        $format = 'xml';
+        $formatter = new \Lequipe\Service\DataFormatterService($format);
+        $this->assertEquals( array('outputType' => 'xml'),$formatter->setFormatParams() );
+    }
 }

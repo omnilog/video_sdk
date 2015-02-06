@@ -19,4 +19,4 @@ class UriParamService implements UriParamServiceInterface
             'method' => $aRes[1]
         );
     }
-} 
+}

@@ -126,14 +126,14 @@ class VideoService implements VideoServiceInterface{
      * @return \Lequipe\Service\Video\SearchVideoInterface
      */
     function getSearchSvc() {
-        return $this->searchVideoSvc;
+        return $this->searchSvc;
     }
 
     /**
      * @param \Lequipe\Service\Video\SearchVideoInterface $searchVideoSvc
      */
     function setSearchSvc($searchVideoSvc) {
-        $this->searchVideoSvc = $searchVideoSvc;
+        $this->searchSvc = $searchVideoSvc;
     }
 
     /**

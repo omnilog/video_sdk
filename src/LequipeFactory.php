@@ -17,10 +17,8 @@ use Lequipe\Service\Video\SerializerVideo;
 use Lequipe\Service\VideoService;
 use Lequipe\Service\VideoServiceInterface;
 
-use Lequipe\Service\SportService;
 use Lequipe\Service\Sport\ListSport;
 use Lequipe\Service\Sport\MapperSport;
-use Lequipe\Service\SportServiceInterface;
 
 use Pimple\Container;
 

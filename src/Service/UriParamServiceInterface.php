@@ -11,4 +11,4 @@ namespace Lequipe\Service;
 interface UriParamServiceInterface
 {
     public function extractParamFromUri($uri);
-} 
+}

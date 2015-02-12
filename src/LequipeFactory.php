@@ -30,9 +30,10 @@ class LequipeFactory {
     private $format = null;
     private $acllog = null;
     private $aclpass = null;
+    private $proxy = null;
     
     
-    public function __construct($url, $login, $password, $format, $acllog = "", $aclpass = "")
+    public function __construct($url, $login, $password, $format, $acllog = "", $aclpass = "", $proxy="")
     {
         $this->url = $url;
         $this->login = $login;
@@ -40,6 +41,7 @@ class LequipeFactory {
         $this->format = $format;
         $this->acllog = $acllog;
         $this->aclpass = $aclpass;
+        $this->proxy = $proxy;
     }
 
     /**
@@ -61,6 +63,7 @@ class LequipeFactory {
         $container['format'] = $this->format;
         $container['acllog'] = $this->acllog;
         $container['aclpass'] = $this->aclpass;
+        $container['proxy'] = $this->proxy;
         
         // ExceptionService
         $container['service.exception'] = function ($c) {
@@ -85,7 +88,7 @@ class LequipeFactory {
 
         // GuzzleService
         $container['service.guzzle'] = function ($c) {
-            $svc = new GuzzleService($c['url']);
+            $svc = new GuzzleService($c['url'],null,$c['proxy']);
             $svc->setExceptionSvc($c['service.exception']);
             $svc->setDataFormatterSvc($c['service.data_formatter']);
             $svc->setAuthSvc($c['service.auth']);

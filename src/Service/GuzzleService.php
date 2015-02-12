@@ -19,6 +19,7 @@ class GuzzleService implements GuzzleServiceInterface
     protected $client;
 
     private $url;
+    private $proxy;
 
     /**
      * @var UriParamServiceInterface
@@ -40,7 +41,7 @@ class GuzzleService implements GuzzleServiceInterface
      */
     private $exceptionSvc = null;
 
-    public function __construct($url = null, ClientInterface $client = null)
+    public function __construct($url = null, ClientInterface $client = null,$proxy = null)
     {
         if (null === $client) {
             $client = new Client();
@@ -48,6 +49,7 @@ class GuzzleService implements GuzzleServiceInterface
         $this->client = $client;
 
         $this->url = $url;
+        $this->proxy = $proxy;
     }
     
 
@@ -61,8 +63,8 @@ class GuzzleService implements GuzzleServiceInterface
      */
     public function get($uri, $headers = array(), $params = array())
     {
-                
-       $format = $this->getDataFormatterSvc()->getFormat();
+        $this->client->getConfig()->set('curl.options', array(CURLOPT_CONNECTTIMEOUT => 10, CURLOPT_PROXY => $this->proxy));
+        $format = $this->getDataFormatterSvc()->getFormat();
         
         $request = $this->client->get(
             $this->getUrl(),

@@ -17,7 +17,9 @@ class Video {
     private $descriptif = null;
     private $duree;
     private $date;
+    private $sport;
     private $idSport;
+    private $idTagSport;
     private $keywords = null;
     private $nbVues;
     private $horsMobile = false;
@@ -191,10 +193,44 @@ class Video {
     
     /**
      * set the idsport of the video
-     * @param integer $date
+     * @param integer $idSport
      */
     public function setIdSport($idSport) {
         $this->idSport = $idSport;
+        return $this;
+    }
+
+    /**
+     * return the sport of the video
+     * @return string
+     */
+    public function getSport() {
+        return $this->sport;
+    }
+
+    /**
+     * set the sport of the video
+     * @param string $sport
+     */
+    public function setSport($sport) {
+        $this->sport = $sport;
+        return $this;
+    }
+
+    /**
+     * return the sport's idtag of the video
+     * @return string
+     */
+    public function getIdTagSport() {
+        return $this->idTagSport;
+    }
+
+    /**
+     * set the sport's idtag of the video
+     * @param int $idTagSport
+     */
+    public function setIdTagSport($idTagSport) {
+        $this->idTagSport = $idTagSport;
         return $this;
     }
     

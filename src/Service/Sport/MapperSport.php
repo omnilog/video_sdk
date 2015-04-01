@@ -13,11 +13,11 @@ class MapperSport implements MapperSportInterface {
         if(is_object($datas)) {
             $sport->setIdTag((string)$datas->IDTAG);
             $sport->setLibelle((string)$datas->LIBELLE);
-            $sport->setIdSport((string)$datas->IDSPORT);
+            $sport->setIdSport((string)(isset($datas->IDSPORT) ? $datas->IDSPORT : $datas->ID_OBJET));
         } else {
             $sport->setIdTag($datas['IDTAG']);
             $sport->setLibelle($datas['LIBELLE']);
-            $sport->setIdSport($datas['IDSPORT']);
+            $sport->setIdSport(isset($datas['IDSPORT']) ? $datas['IDSPORT'] : $datas['ID_OBJET']);
         }
     }
     

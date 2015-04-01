@@ -16,6 +16,11 @@ class AbstractSport extends AbstractApiService {
      * @var MapperSportInterface
      */
     private $mapperSvc;
+
+    /**
+     * @var SerializerSportInterface
+     */
+    private $serializerSvc;
     
     /**
      * @param MapperSportInterface $mapperSvc
@@ -31,6 +36,22 @@ class AbstractSport extends AbstractApiService {
     public function getMapperSvc()
     {
         return $this->mapperSvc;
+    }
+
+    /**
+     * @param SerializerSportInterface $serializerSvc
+     */
+    public function setSerializerSvc($serializerSvc)
+    {
+        $this->serializerSvc = $serializerSvc;
+    }
+
+    /**
+     * @return SerializerSportInterface
+     */
+    public function getSerializerSvc()
+    {
+        return $this->serializerSvc;
     }
     
 }

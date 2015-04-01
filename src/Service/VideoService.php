@@ -7,6 +7,7 @@ use Lequipe\Service\Video\TypeHomeVideoInterface;
 use Lequipe\Service\Video\SearchVideoInterface;
 use Lequipe\Service\Video\InfoVideoInterface;
 use Lequipe\Service\Sport\ListSportInterface;
+use Lequipe\Service\Sport\TagInterface;
 /**
  * Description of Video
  *
@@ -39,17 +40,23 @@ class VideoService implements VideoServiceInterface{
     private $searchSvc;
     
     /**
-     * 
+     *
      * @var InfoVideoInterface
      */
     private $infoSvc;
     
     
     /**
-     * 
+     *
      * @var ListSportInterface
      */
     private $listSportSvc;
+
+    /**
+     *
+     * @var TagLibelleInterface
+     */
+    private $tagSvc;
     
 
     public function getLastVideo($nb = 10, $idtag = "", $tri = "", $page = "", $jours = "") {
@@ -74,6 +81,10 @@ class VideoService implements VideoServiceInterface{
     
     public function getListSport() {
         return $this->getListSportSvc()->execute();
+    }
+
+    public function getTag($idtag) {
+        return $this->getTagSvc()->execute($idtag);
     }
     
     /**
@@ -111,42 +122,42 @@ class VideoService implements VideoServiceInterface{
     /**
      * @return \Lequipe\Service\Video\TypeHomeVideoInterface
      */
-    function getTypeHomeSvc() {
+    public function getTypeHomeSvc() {
         return $this->typeHomeSvc;
     }
 
     /**
      * @param \Lequipe\Service\Video\TypeHomeVideoInterface $typeHomeSvc
      */
-    function setTypeHomeSvc($typeHomeSvc) {
+    public function setTypeHomeSvc($typeHomeSvc) {
         $this->typeHomeSvc = $typeHomeSvc;
     }
 
     /**
      * @return \Lequipe\Service\Video\SearchVideoInterface
      */
-    function getSearchSvc() {
+    public function getSearchSvc() {
         return $this->searchSvc;
     }
 
     /**
      * @param \Lequipe\Service\Video\SearchVideoInterface $searchVideoSvc
      */
-    function setSearchSvc($searchVideoSvc) {
+    public function setSearchSvc($searchVideoSvc) {
         $this->searchSvc = $searchVideoSvc;
     }
 
     /**
      * @return \Lequipe\Service\Video\InfoVideoInterface
      */
-    function getInfoSvc() {
+    public function getInfoSvc() {
         return $this->infoSvc;
     }
     
     /**
      * @param \Lequipe\Service\Video\InfoVideoInterface $infoVideoSvc
      */
-    function setInfoSvc($infoVideoSvc) {
+    public function setInfoSvc($infoVideoSvc) {
         $this->infoSvc = $infoVideoSvc;
     }
     
@@ -154,17 +165,28 @@ class VideoService implements VideoServiceInterface{
     /**
      * @return \Lequipe\Service\Sport\ListSportInterface
      */
-    function getListSportSvc() {
+    public function getListSportSvc() {
         return $this->listSportSvc;
     }
 
     /**
      * @param \Lequipe\Service\Sport\ListSportInterface $listSportSvc
      */
-    function setListSportSvc(ListSportInterface $listSportSvc) {
+    public function setListSportSvc(ListSportInterface $listSportSvc) {
         $this->listSportSvc = $listSportSvc;
     }
 
+    /**
+     * @return \Lequipe\Service\Sport\TagLibelleInterface
+     */
+    public function getTagSvc() {
+        return $this->tagSvc;
+    }
 
-    
+    /**
+     * @param \Lequipe\Service\Sport\TagInterface $tagSvc
+     */
+    public function setTagSvc(TagInterface $tagSvc) {
+        $this->tagSvc = $tagSvc;
+    }
 }

@@ -18,7 +18,9 @@ use Lequipe\Service\VideoService;
 use Lequipe\Service\VideoServiceInterface;
 
 use Lequipe\Service\Sport\ListSport;
+use Lequipe\Service\Sport\Tag;
 use Lequipe\Service\Sport\MapperSport;
+use Lequipe\Service\Sport\SerializerSport;
 
 use Pimple\Container;
 
@@ -112,6 +114,11 @@ class LequipeFactory {
             return new SerializerVideo();
         };
 
+        //SerializerSport
+        $container['service.sport.serializer'] = function($c) {
+            return new SerializerSport();
+        };
+
         // UneVideo
         $container['service.video.une'] = function ($c) {
             $svc = new UneVideo();
@@ -164,6 +171,15 @@ class LequipeFactory {
             $svc->setMapperSvc($c['service.sport.mapper']);
             return $svc;
         };
+
+        //Tag
+        $container['service.video.tag'] = function($c) {
+            $svc = new Tag();
+            $svc->setGuzzleSvc($c['service.guzzle']);
+            $svc->setMapperSvc($c['service.sport.mapper']);
+            $svc->setSerializerSvc($c['service.sport.serializer']);
+            return $svc;
+        };
         
         // VideoService
         $container['service.video'] = function ($c) {
@@ -174,6 +190,7 @@ class LequipeFactory {
             $svc->setSearchSvc($c['service.video.search']);
             $svc->setInfoSvc($c['service.video.info']);
             $svc->setListSportSvc($c['service.video.listSport']);
+            $svc->setTagSvc($c['service.video.tag']);
             return $svc;
         };
        

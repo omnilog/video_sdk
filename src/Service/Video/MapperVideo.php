@@ -21,7 +21,7 @@ class MapperVideo implements MapperVideoInterface{
             $vid->setSurtitle2((string)$datas->SURTITRE2);
             $vid->setDescriptif((string)$datas->DESCRIPTIF);
             $vid->setDuree(sprintf('%02d', ((int)$datas->DUREE) / 60).':'.sprintf('%02d', ((int)$datas->DUREE) % 60));
-            $vid->setDate(strtoupper(date('d M. Y | H:i', strtotime((string)$datas->DATE))));
+            $vid->setDate(mb_strtoupper(strftime('%d %b %Y | %H:%M', strtotime((string)$datas->DATE)), 'UTF-8'));
             $vid->setSport((string)$datas->SPORT);
             $vid->setIdSport((string)$datas->IDSPORT);
             $vid->setIdTagSport((string)$datas->IDTAG_SPORT);
@@ -44,7 +44,7 @@ class MapperVideo implements MapperVideoInterface{
             $vid->setSurtitle2($datas['SURTITRE2']);
             $vid->setDescriptif($datas['DESCRIPTIF']);
             $vid->setDuree(sprintf('%02d', $datas['DUREE'] / 60).':'.sprintf('%02d', $datas['DUREE'] % 60));
-            $vid->setDate(strtoupper(date('d M. Y | H:i', strtotime($datas['DATE']))));
+            $vid->setDate(mb_strtoupper(strftime('%d %b %Y | %H:%M', strtotime($datas['DATE'])), 'UTF-8'));
             $vid->setSport($datas['SPORT']);
             $vid->setIdSport($datas['IDSPORT']);
             $vid->setIdTagSport($datas['IDTAG_SPORT']);
@@ -61,6 +61,7 @@ class MapperVideo implements MapperVideoInterface{
     }
     
     public function getVideos($datas) {
+        setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
         $videos = array();
         
         if(is_object($datas)) {

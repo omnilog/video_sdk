@@ -11,13 +11,13 @@ use Lequipe\Entity\Sport;
 class MapperSport implements MapperSportInterface {
     public function populateSport(Sport $sport, $datas) {
         if(is_object($datas)) {
-            $sport->setIdTag($datas->IDTAG);
-            $sport->setLibelle($datas->LIBELLE);
-            $sport->setIdSport($datas->IDSPORT);
+            $sport->setIdTag((string)$datas->IDTAG);
+            $sport->setLibelle((string)$datas->LIBELLE);
+            $sport->setIdSport((string)(isset($datas->IDSPORT) ? $datas->IDSPORT : $datas->ID_OBJET));
         } else {
             $sport->setIdTag($datas['IDTAG']);
             $sport->setLibelle($datas['LIBELLE']);
-            $sport->setIdSport($datas['IDSPORT']);
+            $sport->setIdSport(isset($datas['IDSPORT']) ? $datas['IDSPORT'] : $datas['ID_OBJET']);
         }
     }
     

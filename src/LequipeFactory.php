@@ -7,6 +7,8 @@ use Lequipe\Service\AuthService;
 use Lequipe\Service\GuzzleService;
 use Lequipe\Service\UriParamService;
 use Lequipe\Service\DataFormatterService;
+use Lequipe\Service\Video\LastVideoLequipe21;
+use Lequipe\Service\Video\SerializerVideoLequipe21;
 use Lequipe\Service\Video\UneVideo;
 use Lequipe\Service\Video\LastVideo;
 use Lequipe\Service\Video\TypeHomeVideo;
@@ -14,6 +16,7 @@ use Lequipe\Service\Video\SearchVideo;
 use Lequipe\Service\Video\InfoVideo;
 use Lequipe\Service\Video\MapperVideo;
 use Lequipe\Service\Video\SerializerVideo;
+use Lequipe\Service\VideoLequipe21Service;
 use Lequipe\Service\VideoService;
 use Lequipe\Service\VideoServiceInterface;
 
@@ -33,7 +36,9 @@ class LequipeFactory {
     private $acllog = null;
     private $aclpass = null;
     private $proxy = null;
-    
+
+    const SITE_VIDEO_LEQUIPE_FR = 1;
+    const SITE_LEQUIPE21_LEQUIPE_FR = 2;
     
     public function __construct($url, $login, $password, $format, $acllog = "", $aclpass = "", $proxy="")
     {
@@ -49,12 +54,12 @@ class LequipeFactory {
     /**
      * @return VideoServiceInterface
      */
-    public function getVideoService() {
-        $container = $this->getContainer();
+    public function getVideoService($site = self::SITE_VIDEO_LEQUIPE_FR) {
+        $container = $this->getContainer($site);
         return $container['service.video'];
     }
     
-    private function getContainer()
+    private function getContainer($site)
     {
         $container = new Container();
 
@@ -66,17 +71,17 @@ class LequipeFactory {
         $container['acllog'] = $this->acllog;
         $container['aclpass'] = $this->aclpass;
         $container['proxy'] = $this->proxy;
-        
+
         // ExceptionService
         $container['service.exception'] = function ($c) {
             return new ExceptionService();
         };
-        
+
         //DataFormatter
         $container['service.data_formatter'] = function ($c) {
             return new DataFormatterService($c['format']);
         };
-        
+
         // UriParamService
         $container['service.uri_param'] = function ($c) {
             return new UriParamService();
@@ -99,16 +104,31 @@ class LequipeFactory {
             return $svc;
         };
 
+        switch($site) {
+            case self::SITE_VIDEO_LEQUIPE_FR:
+                $this->addVideoLequipeFrSvcToContainer($container);
+                break;
+
+            case self::SITE_LEQUIPE21_LEQUIPE_FR:
+                $this->addLequipe21LequipeFrSvcToContainer($container);
+                break;
+        }
+       
+        return $container;
+    }
+
+    private function addVideoLequipeFrSvcToContainer(\Pimple\Container $container)
+    {
         // MapperVideo
         $container['service.video.mapper'] = function($c) {
             return new MapperVideo();
         };
-        
+
         //MapperSport
         $container['service.sport.mapper'] = function($c) {
             return new MapperSport();
         };
-        
+
         //SerializerVideo
         $container['service.video.serializer'] = function($c) {
             return new SerializerVideo();
@@ -136,7 +156,7 @@ class LequipeFactory {
             $svc->setSerializerSvc($c['service.video.serializer']);
             return $svc;
         };
-        
+
         //TypeHomeVideos
         $container['service.video.typeHome'] = function($c) {
             $svc = new TypeHomeVideo();
@@ -145,7 +165,7 @@ class LequipeFactory {
             $svc->setSerializerSvc($c['service.video.serializer']);
             return $svc;
         };
-        
+
         //SearchVideos
         $container['service.video.search'] = function($c) {
             $svc = new SearchVideo();
@@ -154,7 +174,7 @@ class LequipeFactory {
             $svc->setSerializerSvc($c['service.video.serializer']);
             return $svc;
         };
-        
+
         //InfoVideo
         $container['service.video.info'] = function($c) {
             $svc = new InfoVideo();
@@ -163,7 +183,7 @@ class LequipeFactory {
             $svc->setSerializerSvc($c['service.video.serializer']);
             return $svc;
         };
-        
+
         //ListSports
         $container['service.video.listSport'] = function($c) {
             $svc = new ListSport();
@@ -180,7 +200,7 @@ class LequipeFactory {
             $svc->setSerializerSvc($c['service.sport.serializer']);
             return $svc;
         };
-        
+
         // VideoService
         $container['service.video'] = function ($c) {
             $svc = new VideoService();
@@ -193,8 +213,37 @@ class LequipeFactory {
             $svc->setTagSvc($c['service.video.tag']);
             return $svc;
         };
-       
-        return $container;
+    }
+
+    private function addLequipe21LequipeFrSvcToContainer(\Pimple\Container $container)
+    {
+        // MapperVideo
+        $container['service.video.mapper'] = function($c) {
+            return new MapperVideo();
+        };
+
+        //SerializerVideo
+        $container['service.video.serializer'] = function($c) {
+            return new SerializerVideoLequipe21();
+        };
+
+        // LastVideos
+        $container['service.video.last'] = function ($c) {
+            $svc = new LastVideoLequipe21();
+            $svc->setGuzzleSvc($c['service.guzzle']);
+            $svc->setMapperSvc($c['service.video.mapper']);
+            $svc->setSerializerSvc($c['service.video.serializer']);
+            return $svc;
+        };
+
+        // VideoService
+        $container['service.video'] = function ($c) {
+            $svc = new VideoLequipe21Service();
+            $svc->setLastSvc($c['service.video.last']);
+            //$svc->setGrilleSvc();
+            return $svc;
+        };
+
     }
     
 }

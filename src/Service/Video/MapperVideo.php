@@ -35,7 +35,7 @@ class MapperVideo implements MapperVideoInterface{
             $vid->setImage((string)$datas->IMAGE);
             $vid->setTags($datas->TAGS);
 
-            if (isset($datas->IDEMISSION) && is_numeric((string)$datas->IDEMISSION)) {
+            if (isset($datas->IDEMISSION) && is_numeric((string)$datas->IDEMISSION) && 0 != ((string)$datas->IDEMISSION)) {
                 $vid->setIdEmission((string)$datas->IDEMISSION);
             }
         } else {
@@ -61,7 +61,7 @@ class MapperVideo implements MapperVideoInterface{
             $vid->setImage($datas['IMAGE']);
             $vid->setTags($datas['TAGS']);
 
-            if (isset($datas['IDEMISSION']) && is_numeric($datas['IDEMISSION'])) {
+            if (isset($datas['IDEMISSION']) && is_numeric($datas['IDEMISSION']) && 0 != $datas['IDEMISSION']) {
                 $vid->setIdEmission($datas['IDEMISSION']);
             }
         }

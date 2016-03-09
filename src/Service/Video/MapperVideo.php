@@ -34,7 +34,10 @@ class MapperVideo implements MapperVideoInterface{
             $vid->setNbCommentaires((int)$datas->NB_COMMENTAIRES);
             $vid->setImage((string)$datas->IMAGE);
             $vid->setTags($datas->TAGS);
-            
+
+            if (isset($datas->IDEMISSION) && is_numeric((string)$datas->IDEMISSION)) {
+                $vid->setIdEmission((string)$datas->IDEMISSION);
+            }
         } else {
             $vid->setId($datas['ID']);
             $vid->setDmid($datas['DMID']);
@@ -57,6 +60,10 @@ class MapperVideo implements MapperVideoInterface{
             $vid->setNbCommentaires($datas['NB_COMMENTAIRES']);
             $vid->setImage($datas['IMAGE']);
             $vid->setTags($datas['TAGS']);
+
+            if (isset($datas['IDEMISSION']) && is_numeric($datas['IDEMISSION'])) {
+                $vid->setIdEmission($datas['IDEMISSION']);
+            }
         }
     }
     

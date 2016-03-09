@@ -10,6 +10,7 @@ class Video {
     
     private $id;
     private $dmid;
+    private $idEmission;
     private $longTitle;
     private $title;
     private $surtitle1;
@@ -63,6 +64,24 @@ class Video {
         return $this->dmid;
     }
 
+    /**
+     * retourne l'id de l'émission pour les vidéos de L'Equipe21
+     * @return mixed
+     */
+    public function getIdEmission()
+    {
+        return $this->idEmission;
+    }
+
+    /**
+     * sette l'id de l'émission pour les vidéos de L'Equipe21
+     * @param mixed $idEmission
+     */
+    public function setIdEmission($idEmission)
+    {
+        $this->idEmission = $idEmission;
+        return $this;
+    }
         
     /**
      * set the longTitle of the video

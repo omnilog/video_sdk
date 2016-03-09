@@ -25,7 +25,7 @@ class VideoLequipe21Service implements VideoLequipe21ServiceInterface
 
     public function getGrille($dateDebut, $dateFin)
     {
-        // TODO: Implement getGrille() method.
+        return $this->getGrilleSvc()->execute($dateDebut, $dateFin);
     }
 
     /**

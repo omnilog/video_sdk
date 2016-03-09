@@ -4,6 +4,9 @@ namespace Lequipe;
 
 use Lequipe\Service\ExceptionService;
 use Lequipe\Service\AuthService;
+use Lequipe\Service\GrilleLequipe21\GrilleLequipe21;
+use Lequipe\Service\GrilleLequipe21\MapperGrilleLequipe21;
+use Lequipe\Service\GrilleLequipe21\SerializerGrilleLequipe21;
 use Lequipe\Service\GuzzleService;
 use Lequipe\Service\UriParamService;
 use Lequipe\Service\DataFormatterService;
@@ -222,9 +225,19 @@ class LequipeFactory {
             return new MapperVideo();
         };
 
-        //SerializerVideo
+        // MapperGrille
+        $container['service.grille.mapper'] = function($c) {
+            return new MapperGrilleLequipe21();
+        };
+
+        // SerializerVideo
         $container['service.video.serializer'] = function($c) {
             return new SerializerVideoLequipe21();
+        };
+
+        // Serializer Grille
+        $container['service.grille.serializer'] = function($c) {
+            return new SerializerGrilleLequipe21();
         };
 
         // LastVideos
@@ -236,11 +249,20 @@ class LequipeFactory {
             return $svc;
         };
 
+        // Grille
+        $container['service.grille'] = function($c) {
+            $svc = new GrilleLequipe21();
+            $svc->setGuzzleSvc($c['service.guzzle']);
+            $svc->setMapperSvc($c['service.grille.mapper']);
+            $svc->setSerializerSvc($c['service.grille.serializer']);
+            return $svc;
+        };
+
         // VideoService
         $container['service.video'] = function ($c) {
             $svc = new VideoLequipe21Service();
             $svc->setLastSvc($c['service.video.last']);
-            //$svc->setGrilleSvc();
+            $svc->setGrilleSvc($c['service.grille']);
             return $svc;
         };
 

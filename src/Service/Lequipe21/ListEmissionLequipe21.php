@@ -11,7 +11,7 @@ namespace Lequipe\Service\Lequipe21;
 
 class ListEmissionLequipe21 extends AbstractLequipe21 implements ListEmissionLequipe21Interface
 {
-    const URI = 'videos2/getListEmissionsTv';
+    const URI = 'videos2/getListEmissionsE21';
 
     public function execute()
     {

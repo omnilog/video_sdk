@@ -35,8 +35,11 @@ class MapperVideo implements MapperVideoInterface{
             $vid->setImage((string)$datas->IMAGE);
             $vid->setTags($datas->TAGS);
 
-            if (isset($datas->IDEMISSION) && is_numeric((string)$datas->IDEMISSION) && 0 != ((string)$datas->IDEMISSION)) {
-                $vid->setIdEmission((string)$datas->IDEMISSION);
+            if (isset($datas->IDEMISSION) && is_numeric((string)$datas->IDEMISSION)) {
+                $vid->setIdEmission((string)$datas->IDEMISSION)
+                    ->setNomEmission((string)$datas->NOM_EMS)
+                    ->setNomEmissionUrl((string)$datas->NOM_EMS_URL)
+                    ->setLongTitleUrl((string)$datas->TITRE_LONG_URL);
             }
         } else {
             $vid->setId($datas['ID']);
@@ -61,8 +64,11 @@ class MapperVideo implements MapperVideoInterface{
             $vid->setImage($datas['IMAGE']);
             $vid->setTags($datas['TAGS']);
 
-            if (isset($datas['IDEMISSION']) && is_numeric($datas['IDEMISSION']) && 0 != $datas['IDEMISSION']) {
-                $vid->setIdEmission($datas['IDEMISSION']);
+            if (isset($datas['IDEMISSION']) && is_numeric($datas['IDEMISSION'])) {
+                $vid->setIdEmission($datas['IDEMISSION'])
+                    ->setNomEmission($datas['NOM_EMS'])
+                    ->setNomEmissionUrl($datas['NOM_EMS_URL'])
+                    ->setLongTitleUrl($datas['TITRE_LONG_URL']);
             }
         }
     }

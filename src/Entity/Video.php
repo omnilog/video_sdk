@@ -11,7 +11,10 @@ class Video {
     private $id;
     private $dmid;
     private $idEmission;
+    private $nomEmission;
+    private $nomEmissionUrl;
     private $longTitle;
+    private $longTitleUrl;
     private $title;
     private $surtitle1;
     private $surtitle2;
@@ -66,7 +69,7 @@ class Video {
 
     /**
      * retourne l'id de l'émission pour les vidéos de L'Equipe21
-     * @return mixed
+     * @return integer
      */
     public function getIdEmission()
     {
@@ -75,11 +78,49 @@ class Video {
 
     /**
      * sette l'id de l'émission pour les vidéos de L'Equipe21
-     * @param mixed $idEmission
+     * @param integer $idEmission
      */
     public function setIdEmission($idEmission)
     {
         $this->idEmission = $idEmission;
+        return $this;
+    }
+
+    /**
+     * retourne le nom de l'émission
+     * @return string
+     */
+    public function getNomEmission()
+    {
+        return $this->nomEmission;
+    }
+
+    /**
+     * sette le nom de l'émission
+     * @param string $nomEmission
+     */
+    public function setNomEmission($nomEmission)
+    {
+        $this->nomEmission = $nomEmission;
+        return $this;
+    }
+
+    /**
+     * retourne le nom de l'émission utilisable dans les URLs
+     * @return string
+     */
+    public function getNomEmissionUrl()
+    {
+        return $this->nomEmissionUrl;
+    }
+
+    /**
+     * sette le nom de l'émission utilisable dans les URLs
+     * @param string $nomEmissionUrl
+     */
+    public function setNomEmissionUrl($nomEmissionUrl)
+    {
+        $this->nomEmissionUrl = $nomEmissionUrl;
         return $this;
     }
         
@@ -98,6 +139,25 @@ class Video {
      */
     public function getLongTitle() {
         return $this->longTitle;
+    }
+
+    /**
+     * retourne le titre long de la vidéo utilisable dans les URLs
+     * @return string
+     */
+    public function getLongTitleUrl()
+    {
+        return $this->longTitleUrl;
+    }
+
+    /**
+     * sette le titre long de la vidéo utilisable dans les URLs
+     * @param string $longTitleUrl
+     */
+    public function setLongTitleUrl($longTitleUrl)
+    {
+        $this->longTitleUrl = $longTitleUrl;
+        return $this;
     }
     
     /**

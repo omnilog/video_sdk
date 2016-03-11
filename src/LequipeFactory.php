@@ -267,12 +267,22 @@ class LequipeFactory {
             return $svc;
         };
 
+        // InfoVideo
+        $container['service.video.info'] = function($c) {
+            $svc = new InfoVideo();
+            $svc->setGuzzleSvc($c['service.guzzle']);
+            $svc->setMapperSvc($c['service.video.mapper']);
+            $svc->setSerializerSvc($c['service.video.serializer']);
+            return $svc;
+        };
+
         // VideoService
         $container['service.video'] = function ($c) {
             $svc = new VideoLequipe21Service();
             $svc->setLastSvc($c['service.video.last']);
             $svc->setGrilleSvc($c['service.grille']);
             $svc->setListEmissionSvc($c['service.listEmission']);
+            $svc->setInfoSvc($c['service.video.info']);
             return $svc;
         };
 

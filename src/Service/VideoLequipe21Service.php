@@ -26,6 +26,11 @@ class VideoLequipe21Service implements VideoLequipe21ServiceInterface
      */
     private $listEmissionSvc;
 
+    /**
+     * @var \Lequipe\Service\Video\InfoVideoInterface
+     */
+    private $infoSvc;
+
 
     public function getLastVideo($nb = 10, $idEmission = '', $tri = '', $page = '', $jours = '')
     {
@@ -40,6 +45,11 @@ class VideoLequipe21Service implements VideoLequipe21ServiceInterface
     public function getListEmission()
     {
         return $this->getListEmissionSvc()->execute();
+    }
+
+    public function getInfoVideo($idVideo)
+    {
+        return $this->getInfoSvc()->execute($idVideo);
     }
 
     /**
@@ -79,5 +89,18 @@ class VideoLequipe21Service implements VideoLequipe21ServiceInterface
     public function setListEmissionSvc(\Lequipe\Service\Lequipe21\ListEmissionLequipe21Interface $listEmissionSvc)
     {
         $this->listEmissionSvc = $listEmissionSvc;
+    }
+
+    /**
+     * @return \Lequipe\Service\Video\InfoVideoInterface
+     */
+    public function getInfoSvc()
+    {
+        return $this->infoSvc;
+    }
+
+    public function setInfoSvc(\Lequipe\Service\Video\InfoVideoInterface $infoVideoSvc)
+    {
+        $this->infoSvc = $infoVideoSvc;
     }
 }

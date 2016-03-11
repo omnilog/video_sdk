@@ -22,4 +22,11 @@ class SerializerVideoLequipe21 implements SerializerVideoLequipe21Interface
         );
     }
 
+    public function serializeInfo($idVideo)
+    {
+        return array(
+            'dmid' => $idVideo
+        );
+    }
+
 }

@@ -12,4 +12,6 @@ namespace Lequipe\Service\Video;
 interface SerializerVideoLequipe21Interface
 {
     public function serializeLast($nb, $idEmission, $tri, $page, $jours);
+
+    public function serializeInfo($idVideo);
 }

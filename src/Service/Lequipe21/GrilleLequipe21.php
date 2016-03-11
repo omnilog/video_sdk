@@ -6,10 +6,10 @@
  * Time: 17:34
  */
 
-namespace Lequipe\Service\GrilleLequipe21;
+namespace Lequipe\Service\Lequipe21;
 
 
-class GrilleLequipe21 extends AbstractGrilleLequipe21 implements GrilleLequipe21Interface
+class GrilleLequipe21 extends AbstractLequipe21 implements GrilleLequipe21Interface
 {
     const URI = 'videos2/getGrilleE21';
 

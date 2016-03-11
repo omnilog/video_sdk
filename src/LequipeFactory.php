@@ -4,10 +4,11 @@ namespace Lequipe;
 
 use Lequipe\Service\ExceptionService;
 use Lequipe\Service\AuthService;
-use Lequipe\Service\GrilleLequipe21\GrilleLequipe21;
-use Lequipe\Service\GrilleLequipe21\MapperGrilleLequipe21;
-use Lequipe\Service\GrilleLequipe21\SerializerGrilleLequipe21;
 use Lequipe\Service\GuzzleService;
+use Lequipe\Service\Lequipe21\GrilleLequipe21;
+use Lequipe\Service\Lequipe21\ListEmissionLequipe21;
+use Lequipe\Service\Lequipe21\MapperLequipe21;
+use Lequipe\Service\Lequipe21\SerializerLequipe21;
 use Lequipe\Service\UriParamService;
 use Lequipe\Service\DataFormatterService;
 use Lequipe\Service\Video\LastVideoLequipe21;
@@ -226,8 +227,8 @@ class LequipeFactory {
         };
 
         // MapperGrille
-        $container['service.grille.mapper'] = function($c) {
-            return new MapperGrilleLequipe21();
+        $container['service.lequipe21.mapper'] = function($c) {
+            return new MapperLequipe21();
         };
 
         // SerializerVideo
@@ -236,8 +237,8 @@ class LequipeFactory {
         };
 
         // Serializer Grille
-        $container['service.grille.serializer'] = function($c) {
-            return new SerializerGrilleLequipe21();
+        $container['service.lequipe21.serializer'] = function($c) {
+            return new SerializerLequipe21();
         };
 
         // LastVideos
@@ -253,8 +254,16 @@ class LequipeFactory {
         $container['service.grille'] = function($c) {
             $svc = new GrilleLequipe21();
             $svc->setGuzzleSvc($c['service.guzzle']);
-            $svc->setMapperSvc($c['service.grille.mapper']);
-            $svc->setSerializerSvc($c['service.grille.serializer']);
+            $svc->setMapperSvc($c['service.lequipe21.mapper']);
+            $svc->setSerializerSvc($c['service.lequipe21.serializer']);
+            return $svc;
+        };
+
+        // ListEmissions
+        $container['service.listEmission'] = function($c) {
+            $svc = new ListEmissionLequipe21();
+            $svc->setGuzzleSvc($c['service.guzzle']);
+            $svc->setMapperSvc($c['service.lequipe21.mapper']);
             return $svc;
         };
 
@@ -263,6 +272,7 @@ class LequipeFactory {
             $svc = new VideoLequipe21Service();
             $svc->setLastSvc($c['service.video.last']);
             $svc->setGrilleSvc($c['service.grille']);
+            $svc->setListEmissionSvc($c['service.listEmission']);
             return $svc;
         };
 

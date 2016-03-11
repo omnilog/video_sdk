@@ -6,10 +6,11 @@
  * Time: 17:42
  */
 
-namespace Lequipe\Service\GrilleLequipe21;
+namespace Lequipe\Service\Lequipe21;
 
 
-interface SerializerGrilleLequipe21Interface
+interface SerializerLequipe21Interface
 {
     public function serializeGrille($dateDebut, $dateFin);
+
 }

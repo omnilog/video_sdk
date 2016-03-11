@@ -1,6 +1,6 @@
 <?php
 
-namespace Lequipe\Service\GrilleLequipe21;
+namespace Lequipe\Service\Lequipe21;
 
 use Lequipe\Service\AbstractApiService;
 
@@ -9,7 +9,7 @@ use Lequipe\Service\AbstractApiService;
  *
  * @author cguinet
  */
-class AbstractGrilleLequipe21 extends AbstractApiService {
+class AbstractLequipe21 extends AbstractApiService {
     const URI = '';
 
     /**

@@ -6,12 +6,12 @@
  * Time: 14:25
  */
 
-namespace Lequipe\Service\GrilleLequipe21;
+namespace Lequipe\Service\Lequipe21;
 
 
 use Lequipe\Entity\DiffusionLequipe21;
 
-interface MapperGrilleLequipe21Interface
+interface MapperLequipe21Interface
 {
     public function populateDiffusionLequipe21(DiffusionLequipe21 $dif, $datas);
 

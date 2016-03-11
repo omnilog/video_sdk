@@ -12,11 +12,20 @@ namespace Lequipe\Service;
 class VideoLequipe21Service implements VideoLequipe21ServiceInterface
 {
     /**
-     * @var LastVideoLequipe21Interface
+     * @var \Lequipe\Service\Video\LastVideoLequipe21Interface
      */
     private $lastSvc;
 
+    /**
+     * @var \Lequipe\Service\Lequipe21\GrilleLequipe21Interface
+     */
     private $grilleSvc;
+
+    /**
+     * @var \Lequipe\Service\Lequipe21\ListEmissionLequipe21Interface
+     */
+    private $listEmissionSvc;
+
 
     public function getLastVideo($nb = 10, $idEmission = '', $tri = '', $page = '', $jours = '')
     {
@@ -28,6 +37,11 @@ class VideoLequipe21Service implements VideoLequipe21ServiceInterface
         return $this->getGrilleSvc()->execute($dateDebut, $dateFin);
     }
 
+    public function getListEmission()
+    {
+        return $this->getListEmissionSvc()->execute();
+    }
+
     /**
      * @return \Lequipe\Service\Video\LastVideoLequipe21Interface
      */
@@ -36,27 +50,34 @@ class VideoLequipe21Service implements VideoLequipe21ServiceInterface
         return $this->lastSvc;
     }
 
-    /**
-     * @param \Lequipe\Service\Video\LastVideoLequipe21Interface $lastSvc
-     */
-    public function setLastSvc($lastSvc)
+    public function setLastSvc(\Lequipe\Service\Video\LastVideoLequipe21Interface $lastSvc)
     {
         $this->lastSvc = $lastSvc;
     }
 
     /**
-     * @return mixed
+     * @return \Lequipe\Service\Lequipe21\GrilleLequipe21Interface
      */
     public function getGrilleSvc()
     {
         return $this->grilleSvc;
     }
 
-    /**
-     * @param mixed $grilleSvc
-     */
-    public function setGrilleSvc($grilleSvc)
+    public function setGrilleSvc(\Lequipe\Service\Lequipe21\GrilleLequipe21Interface $grilleSvc)
     {
         $this->grilleSvc = $grilleSvc;
+    }
+
+    /**
+     * @return \Lequipe\Service\Lequipe21\ListEmissionLequipe21Interface
+     */
+    public function getListEmissionSvc()
+    {
+        return $this->listEmissionSvc;
+    }
+
+    public function setListEmissionSvc(\Lequipe\Service\Lequipe21\ListEmissionLequipe21Interface $listEmissionSvc)
+    {
+        $this->listEmissionSvc = $listEmissionSvc;
     }
 }

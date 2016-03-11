@@ -6,7 +6,7 @@
  * Time: 17:34
  */
 
-namespace Lequipe\Service\GrilleLequipe21;
+namespace Lequipe\Service\Lequipe21;
 
 
 interface GrilleLequipe21Interface

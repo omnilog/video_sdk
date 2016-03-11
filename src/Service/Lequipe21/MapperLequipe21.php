@@ -6,12 +6,13 @@
  * Time: 14:25
  */
 
-namespace Lequipe\Service\GrilleLequipe21;
+namespace Lequipe\Service\Lequipe21;
 
 
 use Lequipe\Entity\DiffusionLequipe21;
+use Lequipe\Entity\EmissionLequipe21;
 
-class MapperGrilleLequipe21 implements MapperGrilleLequipe21Interface
+class MapperLequipe21 implements MapperLequipe21Interface
 {
     public function populateDiffusionLequipe21(DiffusionLequipe21 $diff, $datas)
     {
@@ -73,6 +74,50 @@ class MapperGrilleLequipe21 implements MapperGrilleLequipe21Interface
         }
 
         return $grille;
+    }
+
+    public function populateEmissionLequipe21(EmissionLequipe21 $ems, $datas)
+    {
+        if (is_object($datas)) {
+            $ems->setId((string)$datas->ID_EMS)
+                ->setNom((string)$datas->NOM_EMS);
+        } else {
+            $ems->setId($datas['ID_EMS'])
+                ->setNom($datas['NOM_EMS']);
+        }
+    }
+
+    public function getEmissions($datas)
+    {
+        $emissions = array();
+
+        if (is_object($datas)) {
+            foreach ($datas->children()->children() as $d) {
+                if (isset($d->ID_EMS) && ! empty($d->ID_EMS)) {
+                    $tmp = new EmissionLequipe21();
+                    $this->populateEmissionLequipe21($tmp, $d);
+                    $emissions[] = $tmp;
+                    unset($tmp);
+                }
+            }
+        } else {
+            $iterator = new \RecursiveArrayIterator($datas);
+            while ($iterator->valid()) {
+                if ($iterator->hasChildren()) {
+                    foreach ($iterator->getChildren() as $key => $value) {
+                        if (is_array($value) && isset($value['ID_EMS']) && ! empty($value['ID_EMS'])) {
+                            $tmp = new EmissionLequipe21();
+                            $this->populateEmissionLequipe21($tmp, $value);
+                            $emissions[] = $tmp;
+                            unset($tmp);
+                        }
+                    }
+                }
+                $iterator->next();
+            }
+        }
+
+        return $emissions;
     }
 
 }

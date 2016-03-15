@@ -18,6 +18,10 @@ class DiffusionLequipe21
     private $descriptifDiffusion;
     private $dureeDiffusion;
     private $typeDiffusion;
+    private $isDirect;
+    private $dmidVideo;
+    private $longTitleVideo;
+    private $longTitleUrlVideo;
     private $idEmission;
     private $dureeEmission;
     private $nomEmission;
@@ -139,6 +143,74 @@ class DiffusionLequipe21
     public function setTypeDiffusion($typeDiffusion)
     {
         $this->typeDiffusion = $typeDiffusion;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIsDirect()
+    {
+        return $this->isDirect;
+    }
+
+    /**
+     * @param mixed $isDirect
+     */
+    public function setIsDirect($isDirect)
+    {
+        $this->isDirect = $isDirect;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDmidVideo()
+    {
+        return $this->dmidVideo;
+    }
+
+    /**
+     * @param mixed $dmidVideo
+     */
+    public function setDmidVideo($dmidVideo)
+    {
+        $this->dmidVideo = $dmidVideo;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLongTitleVideo()
+    {
+        return $this->longTitleVideo;
+    }
+
+    /**
+     * @param mixed $longTitleVideo
+     */
+    public function setLongTitleVideo($longTitleVideo)
+    {
+        $this->longTitleVideo = $longTitleVideo;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLongTitleUrlVideo()
+    {
+        return $this->longTitleUrlVideo;
+    }
+
+    /**
+     * @param mixed $longTitleUrlVideo
+     */
+    public function setLongTitleUrlVideo($longTitleUrlVideo)
+    {
+        $this->longTitleUrlVideo = $longTitleUrlVideo;
         return $this;
     }
 

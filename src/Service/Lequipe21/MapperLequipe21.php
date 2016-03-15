@@ -24,10 +24,17 @@ class MapperLequipe21 implements MapperLequipe21Interface
                 ->setDescriptifDiffusion((string)$datas->TEXTE)
                 ->setDureeDiffusion((string)$datas->DUREE_DIFF)
                 ->setTypeDiffusion((string)$datas->TYPE)
+                ->setIsDirect(1 === ((int)$datas->IS_DIRECT))
                 ->setIdEmission((string)$datas->ID_EMISSION)
                 ->setDureeEmission((string)$datas->DUREE_EMS)
                 ->setNomEmission((string)$datas->NOM_EMS)
                 ->setTitleEmission((string)$datas->TITRE_EMS);
+
+            if (isset($datas->DMID)) {
+                $diff->setDmidVideo((string)$datas->DMID)
+                    ->setLongTitleVideo((string)$datas->TITRE_LONG)
+                    ->setLongTitleUrlVideo((string)$datas->TITRE_LONG_URL);
+            }
         } else {
             $diff->setIdDiffusion($datas['ID_DIFFUSION'])
                 ->setDateDiffusion($datas['DATE_DIFF'])
@@ -36,10 +43,17 @@ class MapperLequipe21 implements MapperLequipe21Interface
                 ->setDescriptifDiffusion($datas['TEXTE'])
                 ->setDureeDiffusion($datas['DUREE_DIFF'])
                 ->setTypeDiffusion($datas['TYPE'])
+                ->setIsDirect(1 === ((int)$datas['IS_DIRECT']))
                 ->setIdEmission($datas['ID_EMISSION'])
                 ->setDureeEmission($datas['DUREE_EMS'])
                 ->setNomEmission($datas['NOM_EMS'])
                 ->setTitleEmission($datas['TITRE_EMS']);
+
+            if (isset($datas['DMID'])) {
+                $diff->setDmidVideo($datas['DMID'])
+                    ->setLongTitleVideo($datas['TITRE_LONG'])
+                    ->setLongTitleUrlVideo($datas['TITRE_LONG_URL']);
+            }
         }
     }
 

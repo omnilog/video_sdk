@@ -25,6 +25,7 @@ class DiffusionLequipe21
     private $idEmission;
     private $dureeEmission;
     private $nomEmission;
+    private $nomEmissionUrl;
     private $titleEmission;
 
     /**
@@ -262,6 +263,23 @@ class DiffusionLequipe21
     public function setNomEmission($nomEmission)
     {
         $this->nomEmission = $nomEmission;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNomEmissionUrl()
+    {
+        return $this->nomEmissionUrl;
+    }
+
+    /**
+     * @param mixed $nomEmissionUrl
+     */
+    public function setNomEmissionUrl($nomEmissionUrl)
+    {
+        $this->nomEmissionUrl = $nomEmissionUrl;
         return $this;
     }
 

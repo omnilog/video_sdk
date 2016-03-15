@@ -28,6 +28,7 @@ class MapperLequipe21 implements MapperLequipe21Interface
                 ->setIdEmission((string)$datas->ID_EMISSION)
                 ->setDureeEmission((string)$datas->DUREE_EMS)
                 ->setNomEmission((string)$datas->NOM_EMS)
+                ->setNomEmissionUrl((string)$datas->NOM_EMS_URL)
                 ->setTitleEmission((string)$datas->TITRE_EMS);
 
             if (isset($datas->DMID)) {
@@ -47,6 +48,7 @@ class MapperLequipe21 implements MapperLequipe21Interface
                 ->setIdEmission($datas['ID_EMISSION'])
                 ->setDureeEmission($datas['DUREE_EMS'])
                 ->setNomEmission($datas['NOM_EMS'])
+                ->setNomEmissionUrl($datas['NOM_EMS_URL'])
                 ->setTitleEmission($datas['TITRE_EMS']);
 
             if (isset($datas['DMID'])) {

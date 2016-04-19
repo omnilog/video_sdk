@@ -11,7 +11,7 @@ namespace Lequipe\Service\Lequipe21;
 
 class GrilleLequipe21 extends AbstractLequipe21 implements GrilleLequipe21Interface
 {
-    const URI = 'videos2/getGrilleE21';
+    const URI = 'videos2/getGrilleE21AgendaTv';
 
     public function execute($dateDebut, $dateFin)
     {

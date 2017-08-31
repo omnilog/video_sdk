@@ -4,42 +4,44 @@ namespace Lequipe\Service\Video;
 
 use Lequipe\Entity\Video;
 use Lequipe\Entity\TypeVideo;
+
 /**
- * Description of MapperVideo
+ * Description of MapperVideo.
  *
  * @author cguinet
  */
-class MapperVideo implements MapperVideoInterface{
-    
-    public function populateVideo(Video $vid, $datas) {
-        if(is_object($datas)) {
-            $vid->setId((string)$datas->ID);
-            $vid->setDmid((string)$datas->DMID);
-            $vid->setLongTitle((string)$datas->TITRE_LONG);
-            $vid->setTitle((string)$datas->TITRE);
-            $vid->setSurtitle1((string)$datas->SURTITRE1);
-            $vid->setSurtitle2((string)$datas->SURTITRE2);
-            $vid->setDescriptif((string)$datas->DESCRIPTIF);
-            $vid->setDuree(sprintf('%02d', ((int)$datas->DUREE) / 60).':'.sprintf('%02d', ((int)$datas->DUREE) % 60));
-            $vid->setDate(mb_strtoupper(strftime('%d %b %Y | %H:%M', strtotime((string)$datas->DATE)), 'UTF-8'));
-            $vid->setSport((string)$datas->SPORT);
-            $vid->setIdSport((string)$datas->IDSPORT);
-            $vid->setIdTagSport((string)$datas->IDTAG_SPORT);
-            $vid->setKeywords((string)$datas->KEYWORDS);
-            $vid->setNbVues((int)$datas->NB_VUES);
-            $vid->setHorsMobile((int)$datas->HORS_MOBILES);
-            $vid->setPrivee((int)$datas->PRIVEE);
-            $vid->setKid((string)$datas->KID);
-            $vid->setChaine((string)$datas->CHAINE);
-            $vid->setNbCommentaires((int)$datas->NB_COMMENTAIRES);
-            $vid->setImage((string)$datas->IMAGE);
+class MapperVideo implements MapperVideoInterface
+{
+    public function populateVideo(Video $vid, $datas)
+    {
+        if (is_object($datas)) {
+            $vid->setId((string) $datas->ID);
+            $vid->setDmid((string) $datas->DMID);
+            $vid->setLongTitle((string) $datas->TITRE_LONG);
+            $vid->setTitle((string) $datas->TITRE);
+            $vid->setSurtitle1((string) $datas->SURTITRE1);
+            $vid->setSurtitle2((string) $datas->SURTITRE2);
+            $vid->setDescriptif((string) $datas->DESCRIPTIF);
+            $vid->setDuree(sprintf('%02d', ((int) $datas->DUREE) / 60).':'.sprintf('%02d', ((int) $datas->DUREE) % 60));
+            $vid->setDate(mb_strtoupper(strftime('%d %b %Y | %H:%M', strtotime((string) $datas->DATE)), 'UTF-8'));
+            $vid->setSport((string) $datas->SPORT);
+            $vid->setIdSport((string) $datas->IDSPORT);
+            $vid->setIdTagSport((string) $datas->IDTAG_SPORT);
+            $vid->setKeywords((string) $datas->KEYWORDS);
+            $vid->setNbVues((int) $datas->NB_VUES);
+            $vid->setHorsMobile((int) $datas->HORS_MOBILES);
+            $vid->setPrivee((int) $datas->PRIVEE);
+            $vid->setKid((string) $datas->KID);
+            $vid->setChaine((string) $datas->CHAINE);
+            $vid->setNbCommentaires((int) $datas->NB_COMMENTAIRES);
+            $vid->setImage((string) $datas->IMAGE);
             $vid->setTags($datas->TAGS);
 
-            if (isset($datas->IDEMISSION) && is_numeric((string)$datas->IDEMISSION)) {
-                $vid->setIdEmission((string)$datas->IDEMISSION)
-                    ->setNomEmission((string)$datas->NOM_EMS)
-                    ->setNomEmissionUrl((string)$datas->NOM_EMS_URL)
-                    ->setLongTitleUrl((string)$datas->TITRE_LONG_URL);
+            if (isset($datas->IDEMISSION) && is_numeric((string) $datas->IDEMISSION)) {
+                $vid->setIdEmission((string) $datas->IDEMISSION)
+                    ->setNomEmission((string) $datas->NOM_EMS)
+                    ->setNomEmissionUrl((string) $datas->NOM_EMS_URL)
+                    ->setLongTitleUrl((string) $datas->TITRE_LONG_URL);
             }
         } else {
             $vid->setId($datas['ID']);
@@ -72,14 +74,15 @@ class MapperVideo implements MapperVideoInterface{
             }
         }
     }
-    
-    public function getVideos($datas) {
+
+    public function getVideos($datas)
+    {
         setlocale(LC_TIME, 'fr_FR.utf8', 'fra');
         $videos = array();
-        
-        if(is_object($datas)) {
+
+        if (is_object($datas)) {
             foreach ($datas->children()->children() as $d) {
-                if(isset($d->ID) && !empty($d->ID)) {
+                if (isset($d->ID) && !empty($d->ID)) {
                     $tmp = new Video();
                     $this->populateVideo($tmp, $d);
                     $videos[] = $tmp;
@@ -91,7 +94,7 @@ class MapperVideo implements MapperVideoInterface{
             while ($iterator->valid()) {
                 if ($iterator->hasChildren()) {
                     foreach ($iterator->getChildren() as $key => $value) {
-                        if(is_array($value) && !empty($value['ID'])) {
+                        if (is_array($value) && !empty($value['ID'])) {
                             $tmp = new Video();
                             $this->populateVideo($tmp, $value);
                             $videos[] = $tmp;
@@ -102,10 +105,13 @@ class MapperVideo implements MapperVideoInterface{
                 $iterator->next();
             }
         }
+
         return $videos;
     }
-    public function populateTypeVideo(TypeVideo $typeVid, $datas) {
-        if(is_object($datas)) {
+
+    public function populateTypeVideo(TypeVideo $typeVid, $datas)
+    {
+        if (is_object($datas)) {
             $typeVid->setId($datas->ID);
             $typeVid->setType($datas->TYPE);
         } else {
@@ -113,18 +119,19 @@ class MapperVideo implements MapperVideoInterface{
             $typeVid->setType($datas['TYPE']);
         }
     }
-    
-    public function getTypeVideos($datas) {
-       $tmp = new TypeVideo();
-        
-        if(is_object($datas)) {
+
+    public function getTypeVideos($datas)
+    {
+        $tmp = new TypeVideo();
+
+        if (is_object($datas)) {
             $this->populateTypeVideo($tmp, $datas->children()->children()->children());
         } else {
             $iterator = new \RecursiveArrayIterator($datas);
             while ($iterator->valid()) {
                 if ($iterator->hasChildren()) {
                     foreach ($iterator->getChildren() as $key => $value) {
-                        if(is_array($value) && !empty($value)) {
+                        if (is_array($value) && !empty($value)) {
                             $this->populateTypeVideo($tmp, $value);
                         }
                     }
@@ -132,6 +139,7 @@ class MapperVideo implements MapperVideoInterface{
                 $iterator->next();
             }
         }
+
         return $tmp;
     }
 }

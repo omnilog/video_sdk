@@ -22,8 +22,8 @@ class MapperVideo implements MapperVideoInterface
             $vid->setSurtitle1((string) $datas->SURTITRE1);
             $vid->setSurtitle2((string) $datas->SURTITRE2);
             $vid->setDescriptif((string) $datas->DESCRIPTIF);
-            $vid->setDuree(sprintf('%02d', ((int) $datas->DUREE) / 60).':'.sprintf('%02d', ((int) $datas->DUREE) % 60));
-            $vid->setDate(mb_strtoupper(strftime('%d %b %Y | %H:%M', strtotime((string) $datas->DATE)), 'UTF-8'));
+            $vid->setDuree((int) $datas->DUREE);
+            $vid->setDate((string) $datas->DATE);
             $vid->setSport((string) $datas->SPORT);
             $vid->setIdSport((string) $datas->IDSPORT);
             $vid->setIdTagSport((string) $datas->IDTAG_SPORT);
@@ -51,8 +51,8 @@ class MapperVideo implements MapperVideoInterface
             $vid->setSurtitle1($datas['SURTITRE1']);
             $vid->setSurtitle2($datas['SURTITRE2']);
             $vid->setDescriptif($datas['DESCRIPTIF']);
-            $vid->setDuree(sprintf('%02d', $datas['DUREE'] / 60).':'.sprintf('%02d', $datas['DUREE'] % 60));
-            $vid->setDate(mb_strtoupper(strftime('%d %b %Y | %H:%M', strtotime($datas['DATE'])), 'UTF-8'));
+            $vid->setDuree($datas['DUREE']);
+            $vid->setDate($datas['DATE']);
             $vid->setSport($datas['SPORT']);
             $vid->setIdSport($datas['IDSPORT']);
             $vid->setIdTagSport($datas['IDTAG_SPORT']);

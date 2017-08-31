@@ -278,17 +278,30 @@ class Video
     /**
      * return the duree of the video.
      *
+     * @param string $format
+     *
      * @return int
      */
-    public function getDuree()
+    public function getDuree($format = 'FULL')
     {
-        return $this->duree;
+        if ('MINUTES' === $format) {
+            return sprintf(
+                '%02d min',
+                $this->duree / 60
+            );
+        }
+
+        return sprintf(
+            '%d:%d',
+            sprintf('%02d', $this->duree / 60),
+            sprintf('%02d', $this->duree % 60)
+        );
     }
 
     /**
      * set the duree of the video.
      *
-     * @param type $duree
+     * @param int $duree
      */
     public function setDuree($duree)
     {
@@ -300,21 +313,28 @@ class Video
     /**
      * return the duree of the video.
      *
+     * @param string $format
+     *
      * @return \DateTime
      */
-    public function getDate()
+    public function getDate($format = '%d %b %Y | %H:%M')
     {
-        return $this->date;
+        return mb_strtoupper(
+            strftime($format, $this->date),
+            'UTF-8'
+        );
     }
 
     /**
      * set the date of the video.
      *
-     * @param \DateTime $date
+     * @param string $date
+     *
+     * @return $this
      */
     public function setDate($date)
     {
-        $this->date = $date;
+        $this->date = strtotime($date);
 
         return $this;
     }

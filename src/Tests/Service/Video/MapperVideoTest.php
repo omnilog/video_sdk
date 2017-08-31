@@ -108,48 +108,48 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase
         $svc = new \Lequipe\Service\Video\MapperVideo();
         $actual = $svc->getVideos(
             array('methodName' => array('realResults' => array(
-                        'ID' => '42',
-                        'DMID' => 'x2emsac',
-                        'TITRE_LONG' => 'la vraie reponse',
-                        'TITRE' => 'la reponse',
-                        'SURTITRE1' => 'Ou pas',
-                        'SURTITRE2' => 'peut être',
-                        'DESCRIPTIF' => 'la reponse a la question',
-                        'DUREE' => '122',
-                        'DATE' => 'Jan 11 2014 07:59:01:607PM',
-                        'IDSPORT' => '101',
-                        'KEYWORDS' => '42 ; la reponse',
-                        'NB_VUES' => '420',
-                        'HORS_MOBILES' => '0',
-                        'PRIVEE' => '0',
-                        'CHAINE' => 'lequipe',
-                        'KID' => 'k1W21JxRxTRE0e9WGHy',
-                        'NB_COMMENTAIRES' => '350',
-                        'IMAGE' => 'http://placehold.it/650X250',
-                        'TAGS' => 'Tag1',
-                    ),
-                    array(
-                        'ID' => '38',
-                        'DMID' => 'x2ejo21',
-                        'TITRE_LONG' => 'mon titre long',
-                        'TITRE' => 'mon titre',
-                        'SURTITRE1' => 'mon surtitre 1',
-                        'SURTITRE2' => 'mon surtitre 2',
-                        'DESCRIPTIF' => 'mon descriptif',
-                        'DUREE' => '90',
-                        'DATE' => 'Jan 11 2014 07:59:01:607PM',
-                        'IDSPORT' => '48',
-                        'KEYWORDS' => 'keyword1 ; keyword2',
-                        'NB_VUES' => '10520',
-                        'HORS_MOBILES' => '1',
-                        'PRIVEE' => '1',
-                        'CHAINE' => 'lequipeLigue1',
-                        'KID' => 'k1W21JxRxTRE0e9WGHy',
-                        'NB_COMMENTAIRES' => '120',
-                        'IMAGE' => 'http://placehold.it/650X250',
-                        'TAGS' => 'Tag2',
-                    ),
+                'ID' => '42',
+                'DMID' => 'x2emsac',
+                'TITRE_LONG' => 'la vraie reponse',
+                'TITRE' => 'la reponse',
+                'SURTITRE1' => 'Ou pas',
+                'SURTITRE2' => 'peut être',
+                'DESCRIPTIF' => 'la reponse a la question',
+                'DUREE' => '122',
+                'DATE' => 'Jan 11 2014 07:59:01:607PM',
+                'IDSPORT' => '101',
+                'KEYWORDS' => '42 ; la reponse',
+                'NB_VUES' => '420',
+                'HORS_MOBILES' => '0',
+                'PRIVEE' => '0',
+                'CHAINE' => 'lequipe',
+                'KID' => 'k1W21JxRxTRE0e9WGHy',
+                'NB_COMMENTAIRES' => '350',
+                'IMAGE' => 'http://placehold.it/650X250',
+                'TAGS' => 'Tag1',
+            ),
+                array(
+                    'ID' => '38',
+                    'DMID' => 'x2ejo21',
+                    'TITRE_LONG' => 'mon titre long',
+                    'TITRE' => 'mon titre',
+                    'SURTITRE1' => 'mon surtitre 1',
+                    'SURTITRE2' => 'mon surtitre 2',
+                    'DESCRIPTIF' => 'mon descriptif',
+                    'DUREE' => '90',
+                    'DATE' => 'Jan 11 2014 07:59:01:607PM',
+                    'IDSPORT' => '48',
+                    'KEYWORDS' => 'keyword1 ; keyword2',
+                    'NB_VUES' => '10520',
+                    'HORS_MOBILES' => '1',
+                    'PRIVEE' => '1',
+                    'CHAINE' => 'lequipeLigue1',
+                    'KID' => 'k1W21JxRxTRE0e9WGHy',
+                    'NB_COMMENTAIRES' => '120',
+                    'IMAGE' => 'http://placehold.it/650X250',
+                    'TAGS' => 'Tag2',
                 ),
+            ),
             )
         );
 
@@ -161,8 +161,8 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase
         $vid1->setSurtitle1('Ou pas');
         $vid1->setSurtitle2('peut être');
         $vid1->setDescriptif('la reponse a la question');
-        $vid1->setDuree('02:02');
-        $vid1->setDate('11 JAN. 2014 | 19:59');
+        $vid1->setDuree('122');
+        $vid1->setDate('Jan 11 2014 07:59:01:607PM');
         $vid1->setIdSport('101');
         $vid1->setKeywords('42 ; la reponse');
         $vid1->setNbVues('420');
@@ -182,8 +182,8 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase
         $vid2->setSurtitle1('mon surtitre 1');
         $vid2->setSurtitle2('mon surtitre 2');
         $vid2->setDescriptif('mon descriptif');
-        $vid2->setDuree('01:30');
-        $vid2->setDate('11 JAN. 2014 | 19:59');
+        $vid2->setDuree('90');
+        $vid2->setDate('Jan 11 2014 07:59:01:607PM');
         $vid2->setIdSport('48');
         $vid2->setKeywords('keyword1 ; keyword2');
         $vid2->setNbVues('10520');
@@ -243,8 +243,8 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase
         $vid2->setSurtitle1('Sport Confidentiel');
         $vid2->setSurtitle2('Federer');
         $vid2->setDescriptif('Retrouvez des facettes méconnues de Roger Federer, légende vivante du tennis mondial à travers un portrait diffusé dans Sport Confidentiel à la veille de la finale de la Coupe Davis 2014 remportée par la Suisse.');
-        $vid2->setDuree('11:35');
-        $vid2->setDate('17 DEC. 2014 | 16:39');
+        $vid2->setDuree('695');
+        $vid2->setDate('Dec 17 2014 04:39:01:000PM');
         $vid2->setIdSport('39');
         $vid2->setKeywords('federer,portrait,sport confidentiel,ppremium');
         $vid2->setNbVues('17057');
@@ -267,10 +267,10 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase
         $svc = new \Lequipe\Service\Video\MapperVideo();
         $actual = $svc->getTypeVideos(
             array('methodename' => array('monarray' => array(
-                        'ID' => '38',
-                        'TYPE' => 'HOME',
-                    ),
-                ),
+                'ID' => '38',
+                'TYPE' => 'HOME',
+            ),
+            ),
             )
         );
 

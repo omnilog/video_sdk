@@ -1,38 +1,39 @@
 <?php
 
 /**
- * Description of MapperVideoTest
+ * Description of MapperVideoTest.
  *
  * @author cguinet
  */
-class MapperVideoTest extends \PHPUnit_Framework_TestCase {
-     public function testPopulateVideo() {
-        
+class MapperVideoTest extends \PHPUnit_Framework_TestCase
+{
+    public function testPopulateVideo()
+    {
         $vid = new \Lequipe\Entity\Video();
         $svc = new \Lequipe\Service\Video\MapperVideo();
         $svc->populateVideo($vid, array(
                 'ID' => '42',
                 'DMID' => 'x2emsac',
-                'TITRE_LONG' => 'la vraie reponse', 
-                'TITRE' =>  'la reponse',
+                'TITRE_LONG' => 'la vraie reponse',
+                'TITRE' => 'la reponse',
                 'SURTITRE1' => 'Ou pas',
-                'SURTITRE2' =>  'peut être',
-                'DESCRIPTIF' =>  'la reponse a la question',
-                'DUREE' => '122' ,
+                'SURTITRE2' => 'peut être',
+                'DESCRIPTIF' => 'la reponse a la question',
+                'DUREE' => '122',
                 'DATE' => 'Jan 11 2014 07:59:01:607PM',
                 'IDSPORT' => '101',
-                'KEYWORDS' =>  '42 ; la reponse',
-                'NB_VUES' =>  '420',
+                'KEYWORDS' => '42 ; la reponse',
+                'NB_VUES' => '420',
                 'HORS_MOBILES' => '0',
                 'PRIVEE' => '0',
                 'CHAINE' => 'lequipe',
                 'KID' => 'k1W21JxRxTRE0e9WGHy',
                 'NB_COMMENTAIRES' => '350',
                 'IMAGE' => 'http://placehold.it/650X250',
-                'TAGS' => 'Tag1'
+                'TAGS' => 'Tag1',
             )
         );
-        
+
         $this->assertEquals('42', $vid->getId());
         $this->assertEquals('x2emsac', $vid->getDmid());
         $this->assertEquals('la vraie reponse', $vid->getLongTitle());
@@ -52,14 +53,13 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals('350', $vid->getNbCommentaires());
         $this->assertEquals('http://placehold.it/650X250', $vid->getImage());
         $this->assertEquals('Tag1', $vid->getTags());
-        
     }
-    
-    public function testPopulateVideoWithObject() {
-    
+
+    public function testPopulateVideoWithObject()
+    {
         $vid = new \Lequipe\Entity\Video();
         $svc = new \Lequipe\Service\Video\MapperVideo();
-        
+
         $data->ID = '42';
         $data->DMID = 'x2emsac';
         $data->TITRE_LONG = 'la vraie reponse';
@@ -67,10 +67,10 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase {
         $data->SURTITRE1 = 'Ou pas';
         $data->SURTITRE2 = 'peut être';
         $data->DESCRIPTIF = 'la reponse a la question';
-        $data->DUREE = '122' ;
+        $data->DUREE = '122';
         $data->DATE = 'Jan 11 2014 07:59:01:607PM';
         $data->IDSPORT = '101';
-        $data->KEYWORDS =  '42 ; la reponse';
+        $data->KEYWORDS = '42 ; la reponse';
         $data->NB_VUES = '420';
         $data->HORS_MOBILES = '0';
         $data->PRIVEE = '0';
@@ -79,9 +79,9 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase {
         $data->NB_COMMENTAIRES = '350';
         $data->IMAGE = 'http://placehold.it/650X250';
         $data->TAGS = 'Tag1';
-                
+
         $svc->populateVideo($vid, $data);
-        
+
         $this->assertEquals('42', $vid->getId());
         $this->assertEquals('x2emsac', $vid->getDmid());
         $this->assertEquals('la vraie reponse', $vid->getLongTitle());
@@ -101,60 +101,58 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals('350', $vid->getNbCommentaires());
         $this->assertEquals('http://placehold.it/650X250', $vid->getImage());
         $this->assertEquals('Tag1', $vid->getTags());
-        
     }
-    public function testGetvideos() {
 
+    public function testGetvideos()
+    {
         $svc = new \Lequipe\Service\Video\MapperVideo();
         $actual = $svc->getVideos(
-            array( "methodName" =>
-                array( "realResults" =>
-                    array(
+            array('methodName' => array('realResults' => array(
                         'ID' => '42',
                         'DMID' => 'x2emsac',
-                        'TITRE_LONG' => 'la vraie reponse', 
-                        'TITRE' =>  'la reponse',
+                        'TITRE_LONG' => 'la vraie reponse',
+                        'TITRE' => 'la reponse',
                         'SURTITRE1' => 'Ou pas',
-                        'SURTITRE2' =>  'peut être',
-                        'DESCRIPTIF' =>  'la reponse a la question',
-                        'DUREE' => '122' ,
+                        'SURTITRE2' => 'peut être',
+                        'DESCRIPTIF' => 'la reponse a la question',
+                        'DUREE' => '122',
                         'DATE' => 'Jan 11 2014 07:59:01:607PM',
                         'IDSPORT' => '101',
-                        'KEYWORDS' =>  '42 ; la reponse',
-                        'NB_VUES' =>  '420',
+                        'KEYWORDS' => '42 ; la reponse',
+                        'NB_VUES' => '420',
                         'HORS_MOBILES' => '0',
                         'PRIVEE' => '0',
                         'CHAINE' => 'lequipe',
                         'KID' => 'k1W21JxRxTRE0e9WGHy',
                         'NB_COMMENTAIRES' => '350',
                         'IMAGE' => 'http://placehold.it/650X250',
-                        'TAGS' => 'Tag1'
+                        'TAGS' => 'Tag1',
                     ),
                     array(
                         'ID' => '38',
                         'DMID' => 'x2ejo21',
-                        'TITRE_LONG' => 'mon titre long', 
-                        'TITRE' =>  'mon titre',
+                        'TITRE_LONG' => 'mon titre long',
+                        'TITRE' => 'mon titre',
                         'SURTITRE1' => 'mon surtitre 1',
-                        'SURTITRE2' =>  'mon surtitre 2',
-                        'DESCRIPTIF' =>  'mon descriptif',
-                        'DUREE' => '90' ,
+                        'SURTITRE2' => 'mon surtitre 2',
+                        'DESCRIPTIF' => 'mon descriptif',
+                        'DUREE' => '90',
                         'DATE' => 'Jan 11 2014 07:59:01:607PM',
                         'IDSPORT' => '48',
-                        'KEYWORDS' =>  'keyword1 ; keyword2',
-                        'NB_VUES' =>  '10520',
+                        'KEYWORDS' => 'keyword1 ; keyword2',
+                        'NB_VUES' => '10520',
                         'HORS_MOBILES' => '1',
                         'PRIVEE' => '1',
                         'CHAINE' => 'lequipeLigue1',
                         'KID' => 'k1W21JxRxTRE0e9WGHy',
                         'NB_COMMENTAIRES' => '120',
                         'IMAGE' => 'http://placehold.it/650X250',
-                        'TAGS' => 'Tag2'
-                    )
-                )
+                        'TAGS' => 'Tag2',
+                    ),
+                ),
             )
         );
-        
+
         $vid1 = new \Lequipe\Entity\Video();
         $vid1->setId('42');
         $vid1->setDmid('x2emsac');
@@ -175,7 +173,7 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase {
         $vid1->setNbCommentaires('350');
         $vid1->setImage('http://placehold.it/650X250');
         $vid1->setTags('Tag1');
-        
+
         $vid2 = new \Lequipe\Entity\Video();
         $vid2->setId('38');
         $vid2->setDmid('x2ejo21');
@@ -196,18 +194,17 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase {
         $vid2->setNbCommentaires('120');
         $vid2->setImage('http://placehold.it/650X250');
         $vid2->setTags('Tag2');
-        
+
         $result = array($vid1, $vid2);
-        
+
         $this->assertEquals(2, count($result));
         $this->assertEquals($actual, $result);
-
     }
-    
-     public function testGetVideoWithObject() {
 
+    public function testGetVideoWithObject()
+    {
         $svc = new \Lequipe\Service\Video\MapperVideo();
-        
+
         $str = '<?xml version="1.0" encoding="UTF-8"?> <videos2 generator="zend" version="1.0">
                 <getLastVideos>
                 <key_0>
@@ -234,11 +231,10 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase {
                 <status>success</status>
                 </getLastVideos>
                 </videos2>';
-    
+
         $videos = new SimpleXMLElement($str);
         $actual = $svc->getVideos($videos);
-        
-        
+
         $vid2 = new \Lequipe\Entity\Video();
         $vid2->setId('9029');
         $vid2->setDmid('x2ejo21');
@@ -259,36 +255,35 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase {
         $vid2->setNbCommentaires('0');
         $vid2->setImage('http://medias.lequipe.fr/img-video/5942c85c024s/960/0');
         $vid2->setTags('51SPORTTennis393');
-        
+
         $result = array($vid2);
-        
+
         $this->assertEquals(1, count($result));
         $this->assertEquals($result, $actual);
     }
-    
-    
-    public function testGetTypeVideos() {
+
+    public function testGetTypeVideos()
+    {
         $svc = new \Lequipe\Service\Video\MapperVideo();
         $actual = $svc->getTypeVideos(
-            array( "methodename" =>
-                array( "monarray" =>
-                    array(
+            array('methodename' => array('monarray' => array(
                         'ID' => '38',
-                        'TYPE' => 'HOME', 
-                    )
-                )
+                        'TYPE' => 'HOME',
+                    ),
+                ),
             )
         );
-        
+
         $typeVid = new \Lequipe\Entity\TypeVideo();
         $typeVid->setId('38');
         $typeVid->setType('HOME');
-        
+
         $this->assertEquals($typeVid, $actual);
     }
-    
-     public function testGetTypeVideosWithObject() {
-       $svc = new \Lequipe\Service\Video\MapperVideo();
+
+    public function testGetTypeVideosWithObject()
+    {
+        $svc = new \Lequipe\Service\Video\MapperVideo();
         $str = '<?xml version="1.0" encoding="UTF-8"?> <videos2 generator="zend" version="1.0">
                 <getTypeHome>
                 <key_0>
@@ -298,18 +293,19 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase {
                 <status>success</status>
                 </getTypeHome>
                 </videos2>';
-        
+
         $type = new SimpleXMLElement($str);
-        $actual = $svc->getTypeVideos( $type);
-        
+        $actual = $svc->getTypeVideos($type);
+
         $typeVid = new \Lequipe\Entity\TypeVideo();
         $typeVid->setId('48');
         $typeVid->setType('TOP');
-        
+
         $this->assertEquals($typeVid, $actual);
     }
-    
-    public function testPopulateTypeVideo() {
+
+    public function testPopulateTypeVideo()
+    {
         $typeVid = new \Lequipe\Entity\TypeVideo();
         $svc = new \Lequipe\Service\Video\MapperVideo();
         $svc->populateTypeVideo($typeVid, array(
@@ -317,23 +313,22 @@ class MapperVideoTest extends \PHPUnit_Framework_TestCase {
                 'TYPE' => 'LST',
             )
         );
-        
+
         $this->assertEquals('676', $typeVid->getId());
         $this->assertEquals('LST', $typeVid->getType());
-        
     }
-    
-    public function testPopulateTypeVideoWithObject() {
+
+    public function testPopulateTypeVideoWithObject()
+    {
         $typeVid = new \Lequipe\Entity\TypeVideo();
-        
+
         $data->ID = '676';
         $data->TYPE = 'LST';
-        
+
         $svc = new \Lequipe\Service\Video\MapperVideo();
         $svc->populateTypeVideo($typeVid, $data);
-        
+
         $this->assertEquals('676', $typeVid->getId());
         $this->assertEquals('LST', $typeVid->getType());
-        
     }
 }
